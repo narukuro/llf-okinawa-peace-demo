@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖縄・嘉手納の平和学習プログラム｜道の駅かでな LLF</title>
+<meta name="description" content="嘉手納町・道の駅かでなを拠点にした教育旅行向け平和学習プログラム。展望所から基地を一望し、見る・聞く・知るで「ほんとの沖縄」に触れる。修学旅行・教育旅行のご予約はLLFへ。">
+<meta name="theme-color" content="#26334D">
+<link rel="canonical" href="https://example.com/">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="沖縄・嘉手納の平和学習プログラム｜道の駅かでな LLF">
+<meta property="og:description" content="見る・聞く・知る ほんとの沖縄。道の駅かでなを拠点にした教育旅行向け平和学習プログラム。">
+<meta property="og:image" content="assets/hero-kadena-view.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Webフォント（Shippori Mincho 700 / Noto Serif JP 600,700 / Noto Sans JP 400,500,700 / Inter 400,500,600） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700&family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+  /* ===========================================================
+     LLF沖縄 平和学習プログラム — ランディングページ
+     正典: design_handoff_llf_landing（README / LLF Landing.html / tokens）
+     1ファイル完結。トークン → ベース → ページの順で展開。
+     =========================================================== */
+
+  /* ---------------------------------------------------------------
+     1) カラートークン（OKLCH基準・HEXは目安）
+     白が主役 / ティールは点で効かせる / ネイビーは要所のみ
+     --------------------------------------------------------------- */
+  :root {
+    --bg:        oklch(98.5% 0.004 95);   /* #FBFAF7 和紙のような暖かい白 */
+    --bg-sub:    oklch(96% 0.006 90);     /* #F3F1EC セクション交互・カード地 */
+    --ink:       oklch(25% 0.02 250);     /* #22272E 本文（墨） */
+    --ink-soft:  oklch(45% 0.02 250);     /* #5B636E 補足・キャプション */
+    --teal:      oklch(58% 0.10 195);     /* #2B8C8C CTA・リンク・見出し罫 */
+    --teal-deep: oklch(48% 0.09 200);     /* #1F6E70 ホバー・強調 */
+    --navy:      oklch(30% 0.06 255);     /* #26334D 濃色面背景・フッター */
+    --clay:      oklch(90% 0.03 70);      /* #F0E4D4 地域交流セクション地 */
+    --line:      oklch(88% 0.008 90);     /* #DDD9D1 区切り線・カード枠 */
+
+    --ink-inv:      oklch(96% 0.01 95);   /* #F4F2ED 反転文字 */
+    --teal-on-dark: oklch(72% 0.11 190);  /* #5FBDB8 濃色面上でAA確保 */
+
+    --navy-veil:    oklch(22% 0.05 255 / 0.62);
+    --navy-veil-2:  oklch(20% 0.05 255 / 0.30);
+
+    /* セマンティック・エイリアス */
+    --surface-page: var(--bg);
+    --surface-alt:  var(--bg-sub);
+    --surface-card: var(--bg);
+    --surface-deep: var(--navy);
+    --surface-warm: var(--clay);
+    --text-body:    var(--ink);
+    --text-muted:   var(--ink-soft);
+    --text-on-deep: var(--ink-inv);
+    --accent:        var(--teal);
+    --accent-strong: var(--teal-deep);
+    --accent-on-deep:var(--teal-on-dark);
+    --border-hair:   var(--line);
+    --focus-ring:    var(--teal);
+  }
+
+  /* ---------------------------------------------------------------
+     2) タイポグラフィ・トークン
+     見出し=明朝 / 本文=ゴシック / 英字=ラテン
+     --------------------------------------------------------------- */
+  :root {
+    --font-serif: "Shippori Mincho", "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+    --font-sans:  "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+    --font-latin: "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-label: "Inter", sans-serif;
+
+    --text-xs:   clamp(0.75rem, calc(0.2vw + 0.7rem), 0.875rem);
+    --text-sm:   clamp(0.875rem, calc(0.25vw + 0.82rem), 1rem);
+    --text-base: clamp(1rem, calc(0.3vw + 0.91rem), 1.125rem);
+    --text-lg:   clamp(1.25rem, calc(0.5vw + 1.1rem), 1.5rem);
+    --text-xl:   clamp(1.5rem, calc(0.8vw + 1.3rem), 2rem);
+    --text-2xl:  clamp(1.875rem, calc(1.2vw + 1.5rem), 2.5rem);
+    --text-3xl:  clamp(2.25rem, calc(2.4vw + 1.6rem), 3.75rem);
+
+    --weight-serif:  700;
+    --weight-body:   400;
+    --weight-medium: 500;
+    --weight-bold:   700;
+
+    --leading-head:  1.3;
+    --leading-body:  1.8;
+    --tracking-head: 0.04em;
+    --tracking-body: 0.05em;
+    --tracking-label:0.18em;
+  }
+
+  /* ---------------------------------------------------------------
+     3) スペーシング・グリッド・角丸・影トークン（8pxベース）
+     --------------------------------------------------------------- */
+  :root {
+    --space-2:  8px;
+    --space-3:  12px;
+    --space-4:  16px;
+    --space-6:  24px;
+    --space-8:  32px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-24: 96px;
+    --space-32: 128px;
+
+    --section-y: clamp(var(--space-24), 8vw, var(--space-32));
+
+    --container: 1120px;
+    --container-narrow: 720px;
+    --gutter: clamp(var(--space-6), 4vw, var(--space-12));
+
+    --radius-sm:   8px;
+    --radius-md:   12px;
+    --radius-lg:   20px;
+    --radius-pill: 999px;
+
+    --shadow-card:  0 1px 2px oklch(25% 0.02 250 / 0.04);
+    --shadow-hover: 0 8px 28px oklch(25% 0.04 250 / 0.10);
+    --shadow-cta:   0 6px 20px oklch(48% 0.09 200 / 0.28);
+
+    --grid-gap: var(--space-6);
+  }
+
+  /* ---------------------------------------------------------------
+     4) ベース組版・リセット（日本語組版）
+     --------------------------------------------------------------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--surface-page);
+    color: var(--text-body);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-feature-settings: "palt" 1;
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-body);
+    overflow-wrap: anywhere;
+    word-break: auto-phrase;
+    hanging-punctuation: first allow-end;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  p { max-width: 38em; }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: var(--weight-serif);
+    line-height: var(--leading-head);
+    letter-spacing: var(--tracking-head);
+    text-wrap: balance;
+    margin: 0;
+  }
+  .num, time, [data-num] { font-family: var(--font-latin); font-variant-numeric: tabular-nums; }
+  .label-en {
+    font-family: var(--font-label);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+  }
+  a { color: var(--accent-strong); }
+  img { max-width: 100%; height: auto; display: block; }
+  :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; border-radius: 2px; }
+
+  /* ---------------------------------------------------------------
+     5) レイアウト共通
+     --------------------------------------------------------------- */
+  .wrap {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .wrap--narrow { max-width: var(--container-narrow); }
+
+  /* ---------- メタチップ（所要時間・対象） ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: var(--space-3); list-style: none; margin: 0; padding: 0; }
+  .chip {
+    font-size: var(--text-sm);
+    color: var(--ink-soft);
+    background: var(--bg-sub);
+    border-radius: var(--radius-pill);
+    padding: 7px 16px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .chip--on-dark {
+    color: var(--ink-inv);
+    background: oklch(96% 0.01 95 / 0.12);
+    backdrop-filter: blur(2px);
+  }
+
+  /* ---------- ボタン ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-sans); font-weight: var(--weight-medium);
+    font-size: var(--text-base); letter-spacing: 0.04em;
+    border-radius: var(--radius-pill);
+    padding: 14px 28px; border: 1.5px solid transparent;
+    cursor: pointer; text-decoration: none;
+    transition: transform .18s ease-out, background-color .18s ease-out, box-shadow .18s ease-out, color .18s ease-out;
+  }
+  .btn--primary { background: var(--teal-deep); color: #fff; box-shadow: var(--shadow-cta); }
+  .btn--primary:hover { background: var(--teal); transform: translateY(-2px); }
+  .btn--ghost-dark { background: transparent; color: var(--ink-inv); border-color: oklch(96% 0.01 95 / 0.45); }
+  .btn--ghost-dark:hover { background: oklch(96% 0.01 95 / 0.1); }
+  .btn .arrow { transition: transform .18s ease-out; }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ---------- 写真メディア（image-slot を本番の <img> に置換） ---------- */
+  .media-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  /* 写真未設定枠：差し替え前提の上品なプレースホルダー */
+  .img-ph {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; text-align: center; padding: 24px; box-sizing: border-box;
+    color: var(--ink-soft);
+    background:
+      radial-gradient(120% 100% at 50% 0%, oklch(96% 0.006 90) 0%, oklch(90% 0.03 70 / 0.55) 100%);
+  }
+  .img-ph svg { opacity: .4; }
+  .img-ph .cap { font-size: var(--text-sm); max-width: 88%; line-height: 1.6; }
+
+  /* ===========================================================
+     ヘッダー（透明 → スクロールで白＋影）
+     =========================================================== */
+  .site-header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    display: flex; align-items: center;
+    transition: background-color .3s ease, box-shadow .3s ease, border-color .3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding-block: 18px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 12px; text-decoration: none; flex-shrink: 0; white-space: nowrap; }
+  .brand .mark {
+    font-family: var(--font-latin); font-weight: 600; font-size: 1.5rem;
+    letter-spacing: 0.06em; color: var(--ink-inv); white-space: nowrap;
+    transition: color .3s ease;
+  }
+  .brand .mark-sub {
+    font-family: var(--font-label); text-transform: uppercase;
+    letter-spacing: 0.22em; font-size: 0.6rem; font-weight: 500; white-space: nowrap;
+    color: var(--teal-on-dark); transition: color .3s ease;
+  }
+  .nav { display: flex; align-items: center; gap: var(--space-8); }
+  .nav-links { display: flex; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    font-size: var(--text-sm); color: var(--ink-inv); text-decoration: none;
+    letter-spacing: 0.06em; padding: 4px 0; position: relative; transition: color .3s ease;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -2px; height: 1.5px; width: 0;
+    background: var(--teal-on-dark); transition: width .2s ease-out;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .header-cta {
+    font-family: var(--font-sans); font-weight: 500; font-size: var(--text-sm);
+    padding: 9px 20px; border-radius: var(--radius-pill);
+    background: var(--ink-inv); color: var(--navy); text-decoration: none;
+    transition: background-color .2s ease, color .2s ease, transform .18s ease-out;
+    white-space: nowrap;
+  }
+  .header-cta:hover { transform: translateY(-1px); background: #fff; }
+
+  /* スクロール後 */
+  .site-header.scrolled {
+    background: oklch(98.5% 0.004 95 / 0.9);
+    backdrop-filter: blur(10px) saturate(1.1);
+    box-shadow: 0 1px 0 var(--line), var(--shadow-card);
+    border-bottom-color: var(--line);
+  }
+  .site-header.scrolled .brand .mark { color: var(--ink); }
+  .site-header.scrolled .brand .mark-sub { color: var(--teal-deep); }
+  .site-header.scrolled .nav-links a { color: var(--ink); }
+  .site-header.scrolled .nav-links a::after { background: var(--teal-deep); }
+  .site-header.scrolled .header-cta { background: var(--teal-deep); color: #fff; }
+
+  /* ===========================================================
+     スムーススクロール（アンカーリンク）
+     =========================================================== */
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* ===========================================================
+     ハンバーガー（トグル）＋モバイルドロワー
+     =========================================================== */
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; padding: 0 9px; box-sizing: border-box;
+    background: transparent; border: 0; cursor: pointer; flex-shrink: 0; z-index: 60;
+  }
+  .nav-toggle span { display: block; height: 2px; width: 100%; background: var(--ink-inv); border-radius: 2px; transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .2s ease, background-color .3s ease; }
+  .site-header.scrolled .nav-toggle span { background: var(--ink); }
+  body.nav-open .nav-toggle span { background: var(--ink-inv); }
+  body.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-nav {
+    position: fixed; inset: 0; z-index: 55; display: flex; flex-direction: column;
+    justify-content: center; padding: var(--gutter);
+    background: oklch(28% 0.045 255 / 0.98); backdrop-filter: blur(8px);
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity .34s ease, transform .34s cubic-bezier(.2,.7,.2,1), visibility .34s;
+  }
+  body.nav-open .mobile-nav { opacity: 1; visibility: visible; transform: none; }
+  .mobile-nav nav { display: flex; flex-direction: column; gap: var(--space-2); max-width: 460px; margin: 0 auto; width: 100%; }
+  .mobile-nav a {
+    font-family: var(--font-serif); font-weight: var(--weight-serif); font-size: clamp(1.6rem, 7vw, 2.1rem);
+    color: var(--ink-inv); text-decoration: none; padding: 14px 4px; letter-spacing: 0.02em;
+    border-bottom: 1px solid oklch(96% 0.01 95 / 0.14);
+    opacity: 0; transform: translateY(14px); transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  body.nav-open .mobile-nav a { opacity: 1; transform: none; }
+  body.nav-open .mobile-nav a:nth-child(1) { transition-delay: .08s; }
+  body.nav-open .mobile-nav a:nth-child(2) { transition-delay: .14s; }
+  body.nav-open .mobile-nav a:nth-child(3) { transition-delay: .20s; }
+  body.nav-open .mobile-nav a:nth-child(4) { transition-delay: .26s; }
+  body.nav-open .mobile-nav a:nth-child(5) { transition-delay: .32s; }
+  .mobile-nav a:hover { color: var(--teal-on-dark); }
+  .mobile-nav__cta {
+    margin-top: var(--space-6); border: 0 !important; color: var(--navy) !important;
+    background: var(--ink-inv); border-radius: var(--radius-pill); text-align: center;
+    font-family: var(--font-sans) !important; font-weight: 600 !important; font-size: 1.05rem !important;
+    padding: 16px !important;
+  }
+  .mobile-nav__meta { max-width: 460px; margin: var(--space-12) auto 0; width: 100%; color: oklch(96% 0.01 95 / 0.6); font-size: var(--text-sm); line-height: 1.8; }
+  body.nav-open { overflow: hidden; }
+
+  /* ===========================================================
+     ヒーロー
+     =========================================================== */
+  .hero {
+    position: relative; min-height: clamp(640px, 92vh, 920px);
+    display: flex; align-items: flex-end;
+    overflow: hidden; isolation: isolate;
+  }
+  .hero__bg { position: absolute; inset: 0; z-index: -2; }
+  /* ヒーロー背景：2枚をクロスフェード */
+  .hero__img {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    will-change: opacity;
+  }
+  .hero__img--a { animation: heroCrossA 14s ease-in-out infinite; }
+  .hero__img--b { opacity: 0; animation: heroCrossB 14s ease-in-out infinite; }
+  @keyframes heroCrossA { 0%, 43% { opacity: 1; } 50%, 93% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes heroCrossB { 0%, 43% { opacity: 0; } 50%, 93% { opacity: 1; } 100% { opacity: 0; } }
+  /* 暗幕：左下を濃く、文字の可読性を確保 */
+  .hero__veil {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, oklch(22% 0.05 255 / 0.30) 0%, oklch(20% 0.05 255 / 0) 32%),
+      linear-gradient(75deg, oklch(20% 0.05 255 / 0.82) 0%, oklch(22% 0.05 255 / 0.5) 46%, oklch(22% 0.05 255 / 0.12) 100%);
+  }
+  .hero__inner { padding-block: clamp(120px, 18vh, 180px) clamp(56px, 9vh, 92px); }
+  .hero__content { max-width: 720px; }
+  .hero .label-en { color: var(--teal-on-dark); display: block; margin-bottom: var(--space-6); }
+  .hero h1 {
+    color: var(--ink-inv);
+    font-size: var(--text-3xl);
+    line-height: 1.28;
+    margin-bottom: var(--space-6);
+    text-shadow: 0 2px 24px oklch(20% 0.05 255 / 0.45);
+  }
+  .hero h1 .triad { display: inline-flex; gap: 0.1em; }
+  .hero h1 .word { display: inline-block; }
+  .hero h1 .dot { color: var(--teal-on-dark); padding-inline: 0.04em; }
+  .hero h1 .rest { display: inline-block; }
+  .hero__sub {
+    font-family: var(--font-serif); font-weight: 600;
+    color: var(--ink-inv); font-size: var(--text-lg);
+    letter-spacing: 0.06em; margin-bottom: var(--space-8);
+  }
+  .hero__actions {
+    display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap;
+    margin-bottom: var(--space-12);
+  }
+  /* 入場演出：可視状態をベースにし、body.intro のときだけ隠れて出現する。 */
+  body.intro .hero h1 .word { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  body.intro .hero h1 .word:nth-child(1) { animation-delay: .15s; }
+  body.intro .hero h1 .word:nth-child(3) { animation-delay: .45s; }
+  body.intro .hero h1 .word:nth-child(5) { animation-delay: .75s; }
+  body.intro .hero h1 .rest { animation: rise .7s cubic-bezier(.2,.7,.2,1) .98s both; }
+  body.intro .hero__sub { animation: fade .8s ease 1.2s both; }
+  body.intro .hero__actions { animation: fade .8s ease 1.35s both; }
+  body.intro .hero .chips { animation: fade .8s ease 1.5s both; }
+
+  /* 所在地ロケーター */
+  .hero__loc {
+    position: absolute; right: var(--gutter); bottom: clamp(28px, 5vh, 60px); z-index: 3;
+    display: flex; align-items: center; gap: 14px;
+    background: oklch(20% 0.05 255 / 0.44); backdrop-filter: blur(8px) saturate(1.1);
+    border: 1px solid oklch(96% 0.01 95 / 0.18);
+    border-radius: var(--radius-md); padding: 12px 18px 12px 14px;
+  }
+  body.intro .hero__loc { animation: fade .9s ease 1.7s both; }
+  .hero__loc img.loc-map { width: 132px; height: auto; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px oklch(20% 0.03 255 / 0.45)); }
+  .hero__loc .meta { display: flex; flex-direction: column; line-height: 1.25; }
+  .hero__loc .meta .l { font-family: var(--font-label); text-transform: uppercase; letter-spacing: .18em; font-size: 9px; color: var(--teal-on-dark); }
+  .hero__loc .meta .t { font-family: var(--font-serif); font-weight: 700; color: var(--ink-inv); font-size: 15px; letter-spacing: .04em; margin-top: 3px; }
+  .hero__loc .meta .s { font-family: var(--font-sans); color: oklch(96% 0.01 95 / 0.72); font-size: 11px; margin-top: 2px; letter-spacing: .02em; }
+
+  .hero__scroll {
+    position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
+    color: oklch(96% 0.01 95 / 0.6); font-size: var(--text-xs); white-space: nowrap;
+    letter-spacing: 0.2em; text-transform: uppercase; font-family: var(--font-label);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .hero__scroll::after {
+    content: ""; width: 1px; height: 30px;
+    background: linear-gradient(oklch(96% 0.01 95 / 0.6), transparent);
+    animation: scrollpulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scrollpulse { 0%,100%{ transform: scaleY(.5); opacity:.4; transform-origin: top;} 50%{ transform: scaleY(1); opacity:1; transform-origin: top;} }
+
+  /* ===========================================================
+     メッセージ帯（navy）
+     =========================================================== */
+  .message { background: var(--navy); color: var(--ink-inv); padding-block: var(--section-y); position: relative; }
+  .message .label-en { color: var(--teal-on-dark); margin-bottom: var(--space-8); }
+  .message__big {
+    font-family: var(--font-serif); font-weight: 700;
+    font-size: var(--text-2xl); line-height: 1.5; color: var(--ink-inv);
+    letter-spacing: 0.04em; margin-bottom: var(--space-12);
+    text-wrap: balance;
+  }
+  .message__big .accent { color: var(--teal-on-dark); }
+  .message__body { color: oklch(96% 0.01 95 / 0.82); font-size: var(--text-base); }
+  .message__body p { max-width: 36em; margin: 0 0 var(--space-6); }
+  .message__body p:last-child { margin-bottom: 0; }
+  .message__stat {
+    display: inline-flex; align-items: baseline; gap: 0.15em;
+    font-family: var(--font-latin); font-weight: 600;
+    color: var(--teal-on-dark); font-variant-numeric: tabular-nums;
+  }
+  .message__stat .big { font-size: 1.4em; }
+
+  /* ===========================================================
+     道の駅かでな / 施設
+     =========================================================== */
+  .place { padding-block: var(--section-y); background: var(--bg-sub); }
+  .place__intro { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--space-16); align-items: center; }
+  .place__intro .copy .label-en { color: var(--teal-deep); display: block; margin-bottom: var(--space-4); }
+  .place__intro .copy h2 { font-size: var(--text-2xl); color: var(--ink); margin-bottom: var(--space-8); line-height: 1.4; }
+  .place__intro .copy p { color: var(--ink-soft); font-size: var(--text-base); line-height: 1.95; margin-bottom: var(--space-6); }
+  .place__intro .copy p:last-child { margin-bottom: 0; }
+  .place__photo { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); box-shadow: var(--shadow-card); background: var(--bg-sub); }
+  /* 画像クロスフェード（下レイヤーを常に表示→真っ白にならない） */
+  .place__slide { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: opacity; }
+  .place__slide--a { opacity: 1; }
+  .place__slide--b { opacity: 0; animation: placeFade 14s ease-in-out infinite; }
+  @keyframes placeFade { 0%, 8% { opacity: 0; } 42%, 58% { opacity: 1; } 92%, 100%{ opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .place__slide--b { animation: none; opacity: 0; } }
+
+  /* ===========================================================
+     3つのプログラム（Bento）
+     =========================================================== */
+  .programs { padding-block: var(--section-y); background: var(--bg); }
+  .section-head { margin-bottom: var(--space-16); max-width: 720px; }
+  .section-head .label-en { color: var(--teal-deep); display: block; margin-bottom: var(--space-4); }
+  .section-head h2 { font-size: var(--text-2xl); color: var(--ink); margin-bottom: var(--space-6); }
+  .section-head .lead { color: var(--ink-soft); font-size: var(--text-lg); line-height: 1.7; max-width: 34em; }
+
+  .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); align-items: stretch; }
+  .pcard {
+    display: flex; flex-direction: column;
+    background: var(--surface-card); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .pcard:hover { box-shadow: var(--shadow-hover); border-color: var(--teal); transform: translateY(-3px); }
+  /* .reveal が後段で transition を上書きするため、.step と同じ動きに揃える（高詳細度で固定） */
+  .bento .pcard { transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease; }
+  .pcard__media { position: relative; aspect-ratio: 16 / 9; background: var(--bg-sub); overflow: hidden; }
+  .pcard__num {
+    position: absolute; top: var(--space-4); left: var(--space-4); z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-latin); font-weight: 600; font-size: var(--text-sm);
+    color: #fff; letter-spacing: 0.08em; white-space: nowrap;
+    background: oklch(20% 0.05 255 / 0.55); backdrop-filter: blur(4px);
+    padding: 5px 12px 5px 10px; border-radius: var(--radius-pill);
+  }
+  .pcard__num::before { content: ""; width: 16px; height: 1.5px; background: var(--teal-on-dark); flex-shrink: 0; }
+  .pcard__body { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4); flex: 1; }
+  .pcard h3 { font-size: var(--text-xl); color: var(--ink); }
+  .pcard__desc { color: var(--ink-soft); font-size: var(--text-base); line-height: 1.8; margin: 0; max-width: 32em; }
+  .pcard__foot { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-6); padding-top: var(--space-2); }
+  .pcard__link {
+    display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+    color: var(--teal-deep); font-weight: 500; font-size: var(--text-sm);
+    text-decoration: none; letter-spacing: 0.04em; white-space: nowrap;
+    border-bottom: 1.5px solid transparent; padding-bottom: 2px; transition: border-color .2s ease;
+  }
+  .pcard__link:hover { border-bottom-color: var(--teal); }
+  .pcard__link .arrow { transition: transform .18s ease-out; }
+  .pcard__link:hover .arrow { transform: translateX(3px); }
+
+  .badge-diff, .badge-base {
+    align-self: flex-start;
+    font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.62rem; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill);
+  }
+  .badge-diff { color: var(--teal-deep); background: oklch(58% 0.10 195 / 0.10); white-space: nowrap; }
+  .badge-base { color: var(--ink-soft); background: var(--bg-sub); white-space: nowrap; }
+
+  /* ===========================================================
+     スクロール演出（ふわっとフェード＋上昇）
+     =========================================================== */
+  .reveal { opacity: 1; transform: none; transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.armed { opacity: 0; transform: translateY(30px); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* パララックス：スクロール連動で画像ブロックを緩やかに上下 */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .px { animation: pxFloat linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+      @keyframes pxFloat { from { transform: translateY(-24px); } to { transform: translateY(24px); } }
+      .px--soft { animation: pxFloatSoft linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+      @keyframes pxFloatSoft { from { transform: translateY(-14px); } to { transform: translateY(14px); } }
+    }
+  }
+  .reveal[data-d="1"] { transition-delay: .08s; }
+  .reveal[data-d="2"] { transition-delay: .16s; }
+  .reveal[data-d="3"] { transition-delay: .24s; }
+
+  @media print { .reveal { opacity: 1 !important; transform: none !important; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    body.intro .hero h1 .word, body.intro .hero h1 .rest, body.intro .hero__sub, body.intro .hero__actions, body.intro .hero .chips { animation: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .hero__scroll::after { animation: none; }
+  }
+
+  /* ===========================================================
+     学びの流れ
+     =========================================================== */
+  .flow { padding-block: var(--section-y); background: var(--bg-sub); }
+  .flow .section-head .label-en { color: var(--teal-deep); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); list-style: none; margin: 0 0 var(--space-12); padding: 0; }
+  .step {
+    display: flex; flex-direction: column;
+    background: var(--surface-card); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .step:hover { box-shadow: var(--shadow-hover); border-color: var(--teal); transform: translateY(-3px); }
+  .step__media { position: relative; aspect-ratio: 16 / 10; background: var(--bg-sub); overflow: hidden; }
+  .step__badge {
+    position: absolute; top: var(--space-4); left: var(--space-4); z-index: 2;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-latin); font-weight: 600; font-size: var(--text-sm); color: #fff;
+    letter-spacing: 0.06em; white-space: nowrap;
+    background: oklch(20% 0.05 255 / 0.55); backdrop-filter: blur(4px);
+    padding: 5px 12px 5px 10px; border-radius: var(--radius-pill);
+  }
+  .step__badge::before { content: ""; width: 16px; height: 1.5px; background: var(--teal-on-dark); flex-shrink: 0; }
+  .step__body { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  .step__floor { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.62rem; color: var(--teal-deep); }
+  .step h3 { font-size: var(--text-xl); color: var(--ink); white-space: nowrap; }
+  .step p { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.8; margin: 0; }
+  .step__tags { display: flex; flex-wrap: wrap; gap: 8px; margin: var(--space-2) 0 0; padding: 0; list-style: none; }
+  .step__tags li { font-size: 0.72rem; color: var(--ink-soft); background: var(--bg-sub); border-radius: var(--radius-pill); padding: 5px 12px; line-height: 1.3; }
+
+  .flow-facts {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-8);
+    list-style: none; margin: 0 0 var(--space-12); padding: var(--space-8) 0;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .fact { display: flex; flex-direction: column; gap: 6px; }
+  .fact .k { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.64rem; color: var(--ink-soft); }
+  .fact .v { font-family: var(--font-serif); font-weight: var(--weight-serif); font-size: var(--text-lg); color: var(--ink); line-height: 1.2; white-space: nowrap; }
+  .fact .v .dot { margin: 0 -0.08em; }
+  .fact .s { font-size: var(--text-sm); color: var(--ink-soft); }
+
+  /* ===========================================================
+     プログラム詳細（② 地域ふれあい交流 ／ ③ オーダーメイド）
+     =========================================================== */
+  .prog-detail { padding-block: var(--section-y); }
+  .prog-detail--warm  { background: var(--clay); }
+  .prog-detail--plain { background: var(--bg); }
+  .prog-detail__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; margin-bottom: var(--space-16); }
+  .prog-detail__media { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; border: 1px solid var(--line); box-shadow: var(--shadow-card); background: var(--bg-sub); }
+  .prog-detail__copy .label-en { color: var(--teal-deep); display: block; margin-bottom: var(--space-4); }
+  .prog-detail__tag {
+    display: inline-block; font-family: var(--font-label); text-transform: uppercase;
+    letter-spacing: 0.16em; font-size: 0.62rem; font-weight: 600; white-space: nowrap;
+    padding: 5px 12px; border-radius: var(--radius-pill); margin-bottom: var(--space-6);
+    color: var(--teal-deep); background: oklch(58% 0.10 195 / 0.12);
+  }
+  .prog-detail__copy h2 { font-size: var(--text-2xl); color: var(--ink); margin-bottom: var(--space-6); line-height: 1.4; }
+  .prog-detail__copy .lead { color: var(--ink); font-size: var(--text-lg); line-height: 1.7; margin: 0 0 var(--space-6); max-width: 34em; }
+  .prog-detail__copy p { color: var(--ink-soft); font-size: var(--text-base); line-height: 1.9; margin: 0; max-width: 36em; }
+
+  /* ===========================================================
+     申し込み / CTA帯（navy）
+     =========================================================== */
+  .apply { background: var(--navy); color: var(--ink-inv); padding-block: var(--section-y); }
+  .apply .label-en { color: var(--teal-on-dark); display: block; margin-bottom: var(--space-6); }
+  .apply h2 { color: var(--ink-inv); font-size: var(--text-2xl); margin-bottom: var(--space-6); }
+  .apply p { color: oklch(96% 0.01 95 / 0.82); font-size: var(--text-base); line-height: 1.95; margin-bottom: var(--space-12); max-width: 42em; }
+  .apply-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); list-style: none; margin: 0 0 var(--space-12); padding: var(--space-8) 0 0; border-top: 1px solid oklch(96% 0.01 95 / 0.18); }
+  .apply-steps li { display: flex; flex-direction: column; gap: var(--space-3); position: relative; }
+  .an { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: oklch(96% 0.01 95 / 0.10); color: var(--teal-on-dark); font-family: var(--font-latin); font-weight: 600; font-size: 0.95rem; }
+  .apply-steps li p { margin: 0; color: oklch(96% 0.01 95 / 0.82); font-size: var(--text-sm); line-height: 1.75; max-width: none; }
+  .apply-steps li:not(:last-child)::after { content: "\2192"; position: absolute; top: 4px; right: calc(var(--space-8) / -2 - 4px); color: var(--ink-inv); opacity: 0.4; font-size: 1rem; }
+  .apply__actions { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+  .btn--on-navy { background: var(--ink-inv); color: var(--navy); box-shadow: 0 6px 20px oklch(20% 0.05 255 / 0.4); }
+  .btn--on-navy:hover { background: #fff; transform: translateY(-2px); }
+
+  /* ===========================================================
+     アクセス
+     =========================================================== */
+  .access { background: var(--bg-sub); padding-block: var(--section-y); }
+  .access__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: var(--space-16); align-items: stretch; }
+  .access__info .label-en { color: var(--teal-deep); display: block; margin-bottom: var(--space-4); }
+  .access__info h2 { font-size: var(--text-2xl); color: var(--ink); margin-bottom: var(--space-8); }
+  .access dl { display: grid; grid-template-columns: max-content 1fr; gap: var(--space-6) var(--space-8); margin: 0; }
+  .access dt { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.64rem; color: var(--ink-soft); padding-top: 5px; }
+  .access dd { margin: 0; color: var(--ink); font-size: var(--text-base); line-height: 1.85; }
+  .access__map { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow-card); min-height: 340px; background: var(--bg); }
+  .access__map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+
+  /* ===========================================================
+     フッター
+     =========================================================== */
+  .site-footer { position: relative; overflow: hidden; background: var(--navy); color: var(--ink-inv); padding-block: var(--space-24) var(--space-12); }
+  .site-footer .wrap { position: relative; z-index: 2; }
+  .footer__bloom {
+    position: absolute; right: -60px; bottom: -90px; z-index: 1; pointer-events: none;
+    width: clamp(380px, 40vw, 660px); height: clamp(380px, 40vw, 660px);
+    background: url('assets/hibiscus.jpg') 31% 57% / cover no-repeat;
+    opacity: 0.58; mix-blend-mode: screen;
+    -webkit-mask-image: radial-gradient(closest-side at 50% 52%, #000 0%, rgba(0,0,0,0.6) 40%, transparent 72%);
+            mask-image: radial-gradient(closest-side at 50% 52%, #000 0%, rgba(0,0,0,0.6) 40%, transparent 72%);
+  }
+  .footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: var(--space-16); padding-bottom: var(--space-16); border-bottom: 1px solid oklch(96% 0.01 95 / 0.14); }
+  .footer__brand .mark { font-family: var(--font-latin); font-weight: 600; font-size: 1.6rem; letter-spacing: 0.06em; color: var(--ink-inv); display: block; }
+  .footer__brand .mark-sub { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.6rem; color: var(--teal-on-dark); display: block; margin-top: 7px; }
+  .footer__brand p { color: oklch(96% 0.01 95 / 0.7); font-size: var(--text-sm); line-height: 1.9; margin: var(--space-6) 0 0; max-width: 30em; }
+  .footer__col h5 { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.64rem; color: var(--teal-on-dark); margin: 0 0 var(--space-6); font-weight: 600; }
+  .footer__col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); }
+  .footer__col a { color: oklch(96% 0.01 95 / 0.82); font-size: var(--text-sm); text-decoration: none; line-height: 1.7; transition: color .2s ease; }
+  .footer__col a:hover { color: var(--teal-on-dark); }
+  .footer__col address { color: oklch(96% 0.01 95 / 0.82); font-size: var(--text-sm); font-style: normal; line-height: 1.8; }
+  .footer__bottom { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-8); gap: var(--space-6); flex-wrap: wrap; }
+  .footer__bottom small { color: oklch(96% 0.01 95 / 0.55); font-size: var(--text-xs); font-family: var(--font-latin); letter-spacing: 0.04em; }
+
+  /* ===========================================================
+     レスポンシブ
+     =========================================================== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .header-cta { display: none; }
+    .bento { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .flow-facts { grid-template-columns: repeat(2, 1fr); }
+    .rsteps, .apply-steps { grid-template-columns: 1fr; }
+    .rsteps li:not(:last-child)::after, .apply-steps li:not(:last-child)::after { display: none; }
+    .place__intro, .access__grid, .footer__top { grid-template-columns: 1fr; }
+    .prog-detail__grid { grid-template-columns: 1fr; }
+    .place__intro { gap: var(--space-12); }
+    .place__photo { aspect-ratio: 16 / 10; }
+  }
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .pcard__body { padding: var(--space-6); }
+  }
+  @media (max-width: 560px) {
+    .hero__loc { display: none; }
+    .hero__actions { flex-direction: column; align-items: stretch; }
+    .hero__actions .btn { justify-content: center; }
+    .flow-facts { grid-template-columns: 1fr; }
+    .apply__actions .btn { justify-content: center; }
+    .footer__bottom { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============== ヘッダー ============== -->
+  <header class="site-header" id="header">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="LLF ホーム">
+        <span class="mark">LLF</span>
+        <span class="mark-sub">Look · Listen · Find out</span>
+      </a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <ul class="nav-links">
+          <li><a href="#programs">プログラム</a></li>
+          <li><a href="#flow">学びの流れ</a></li>
+          <li><a href="#access">アクセス</a></li>
+        </ul>
+        <a class="header-cta" href="#contact">予約・お問い合わせ</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============== モバイルドロワー ============== -->
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav aria-label="モバイルメニュー">
+      <a href="#programs">プログラム</a>
+      <a href="#flow">学びの流れ</a>
+      <a href="#place">道の駅かでな</a>
+      <a href="#access">アクセス</a>
+      <a class="mobile-nav__cta" href="#contact">予約・お問い合わせ</a>
+      <p class="mobile-nav__meta">沖縄県中頭郡嘉手納町 字屋良1026-3<br>道の駅かでな</p>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <!-- ============== ヒーロー ============== -->
+    <section class="hero" data-screen-label="ヒーロー">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__img hero__img--a" style="background-image:url('assets/hero-kadena-view.jpg')"></div>
+        <div class="hero__img hero__img--b" style="background-image:url('assets/hero-guide-room.jpg')"></div>
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <div class="hero__content">
+          <span class="label-en">Educational Travel Program</span>
+          <h1>
+            <span class="triad">
+              <span class="word">見る</span><span class="dot">・</span><span class="word">聞く</span><span class="dot">・</span><span class="word">知る</span>
+            </span>
+            <span class="rest">ほんとの沖縄</span>
+          </h1>
+          <p class="hero__sub">実践！道の駅かでなで平和学習</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contact">
+              予約・お問い合わせ
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn--ghost-dark" href="#programs">プログラムを見る</a>
+          </div>
+          <ul class="chips">
+            <li class="chip chip--on-dark">小・中・高・大 対応</li>
+            <li class="chip chip--on-dark">1クラス専属ガイド</li>
+            <li class="chip chip--on-dark">20〜45名</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="hero__loc" aria-label="所在地：沖縄県嘉手納町">
+        <img class="loc-map" src="assets/okinawa-locator.png" alt="沖縄本島における嘉手納町の位置" />
+        <div class="meta">
+          <span class="l">Location</span>
+          <span class="t">沖縄県 嘉手納町</span>
+          <span class="s">沖縄本島中部・道の駅かでな</span>
+        </div>
+      </aside>
+      <div class="hero__scroll" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- ============== メッセージ帯（navy） ============== -->
+    <section class="message" data-screen-label="メッセージ帯">
+      <div class="wrap wrap--narrow reveal">
+        <span class="label-en">Message</span>
+        <p class="message__big">
+          基地の隣で暮らす現実を、<br>その場所で聞く。<br>
+          <span class="accent">考えることを、やめないで。</span>
+        </p>
+        <div class="message__body">
+          <p>
+            嘉手納町は、その面積の
+            <span class="message__stat"><span class="big">82</span>%</span>
+            を米軍基地が占めます。頭上を戦闘機が横切り、爆音が日常に混じる。そこに、暮らしがあります。
+          </p>
+          <p>
+            見て、聞いて、知る。答えを急がず、現場で受け取った問いを持ち帰る——それがLLFの平和学習です。なぜ。どうして。その疑問が、探究の始まりになります。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 道の駅かでな（メッセージの下） ============== -->
+    <section class="place" id="place" data-screen-label="道の駅かでな">
+      <div class="wrap">
+        <div class="place__intro reveal">
+          <div class="copy">
+            <span class="label-en">Michi-no-Eki Kadena</span>
+            <h2>「基地に隣接する唯一の道の駅」での平和学習</h2>
+            <p>嘉手納基地を見学するために、数多くの人が道の駅かでなを訪れます。想像を超える基地の広大さに、誰もが驚く。予想を超える戦闘機の爆音に、誰もが驚く。その驚きを、驚きだけで終わらせないために——平和について考えていただくために、私たちは平和学習ガイドをはじめました。</p>
+            <p>沖縄の平和学習の、新しい現在地へ。嘉手納町・道の駅かでなから、見て・聞いて・知る学びを届けます。</p>
+          </div>
+          <div class="place__photo px" role="img" aria-label="離陸する軍用機と、嘉手納基地の眺め">
+            <div class="place__slide place__slide--a" style="background-image:url('assets/kadena-jet-takeoff.jpg')"></div>
+            <div class="place__slide place__slide--b" style="background-image:url('assets/observatory-students.png')"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 3つのプログラム（Bento） ============== -->
+    <section class="programs" id="programs" data-screen-label="3つのプログラム">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="label-en">Programs</span>
+          <h2>3つのプログラム</h2>
+          <p class="lead">見る・聞く・知るを、一日の行程に。道の駅かでなの平和学習を軸に、地域交流とオーダーメイド設計を束ねます。</p>
+        </div>
+
+        <div class="bento">
+
+          <!-- ① 道の駅かでな平和学習 -->
+          <article class="pcard pcard--01 reveal">
+            <div class="pcard__media">
+              <span class="pcard__num">01</span>
+              <img class="media-img" src="assets/hero-kadena-view.jpg" alt="展望所から嘉手納基地を望む眺め">
+            </div>
+            <div class="pcard__body">
+              <span class="badge-base">道の駅かでなで開催</span>
+              <h3><span style="white-space:nowrap">道の駅かでな</span><span style="white-space:nowrap">平和学習</span></h3>
+              <p class="pcard__desc">展望所から嘉手納基地を一望し、ガイドが「今そこにある現実」を語る基本プログラム。観光協会主催の受け皿として連携。</p>
+              <div class="pcard__foot">
+                <a class="pcard__link" href="#flow">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ② 地域ふれあい交流 -->
+          <article class="pcard pcard--02 reveal" data-d="1">
+            <div class="pcard__media">
+              <span class="pcard__num">02</span>
+              <img class="media-img" src="assets/community-01.jpg" alt="公民館で地域のお年寄りと中高生が交流する様子">
+            </div>
+            <div class="pcard__body">
+              <span class="badge-diff">LLFだけの体験</span>
+              <h3><span style="white-space:nowrap">地域ふれあい交流</span></h3>
+              <p class="pcard__desc">公民館で地域のお年寄りと膝を交える。サーターアンダギーを囲み、戦中・戦後の暮らしを本人の声で聞く、顔の見える時間。</p>
+              <div class="pcard__foot">
+                <a class="pcard__link" href="#prog-02">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ③ オーダーメイド フィールドワーク -->
+          <article class="pcard pcard--03 reveal" data-d="2">
+            <div class="pcard__media">
+              <span class="pcard__num">03</span>
+              <!-- TODO: フィールドワークの実写真に差し替え（基地周辺・まち歩き） -->
+              <div class="img-ph" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <span class="cap">フィールドワークの様子<br>（基地周辺・まち歩き）</span>
+              </div>
+            </div>
+            <div class="pcard__body">
+              <span class="badge-diff">行程まるごと設計</span>
+              <h3>オーダーメイド フィールドワーク</h3>
+              <p class="pcard__desc">学年・テーマ・所要時間に合わせて行程をまるごと設計。基地のまちを歩き、問いを立てる。大学ゼミの探究・ディスカッションにも対応します。</p>
+              <div class="pcard__foot">
+                <a class="pcard__link" href="#prog-03">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 学びの流れ ============== -->
+    <section class="flow" id="flow" data-screen-label="学びの流れ">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="label-en">Program 01 — Peace Study</span>
+          <h2>道の駅かでな平和学習</h2>
+          <p class="lead">嘉手納基地を一望する展望所と、リニューアルした学習展示室。ガイドが「今そこにある現実」を語る、3部構成・60分の平和学習です。嘉手納町観光協会主催のプログラムを、LLFが受け皿としてご案内します。</p>
+        </div>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <div class="step__media">
+              <span class="step__badge">01</span>
+              <img class="media-img" src="assets/hero-guide-room.jpg" alt="室内で基地概要の説明を受ける様子">
+            </div>
+            <div class="step__body">
+              <span class="step__floor">室内 ・ モニター＆椅子</span>
+              <h3>基地概要説明</h3>
+              <p>椅子を用意した室内で、モニターを使って嘉手納基地の全体像を解説。腰を据えて、基地が町にもたらすものを学びます。</p>
+              <ul class="step__tags">
+                <li>基地の機能・役割</li><li>地域の負担</li><li>地元高校生インタビュー</li>
+              </ul>
+            </div>
+          </li>
+          <li class="step reveal" data-d="1">
+            <div class="step__media">
+              <span class="step__badge">02</span>
+              <!-- TODO: 学習展示室（3F）の実写真に差し替え -->
+              <div class="img-ph" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <span class="cap">学習展示室（3F）</span>
+              </div>
+            </div>
+            <div class="step__body">
+              <span class="step__floor">3F ・ 学習展示室 ・ 20分</span>
+              <h3>学習展示室ガイド</h3>
+              <p>2023年4月に完全リニューアルした展示室へ。探求シートを使い、沖縄戦から今へと続く嘉手納の歩みを、自分の手で読み解きます。</p>
+              <ul class="step__tags">
+                <li>沖縄戦の始まり</li><li>戦争に翻弄される町</li><li>基地の機能拡大</li><li>騒音・悪臭体験ブース</li>
+              </ul>
+            </div>
+          </li>
+          <li class="step reveal" data-d="2">
+            <div class="step__media">
+              <span class="step__badge">03</span>
+              <img class="media-img" src="assets/observatory-students.png" alt="展望所（4F）から嘉手納基地を見学する生徒たち">
+            </div>
+            <div class="step__body">
+              <span class="step__floor">4F ・ 展望所 ・ 30分</span>
+              <h3>展望所ガイド</h3>
+              <p>新展望所はより基地に近く、大人数でも見学可能。飛行場を一望し、爆音と広大な敷地を体感しながら、軍用地と軍用機の「いま」を知ります。</p>
+              <ul class="step__tags">
+                <li>飛行場見学</li><li>騒音測定器</li><li>軍用地について</li><li>飛来する軍用機</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+
+        <ul class="flow-facts reveal">
+          <li class="fact"><span class="k">所要時間</span><span class="v">60分</span><span class="s">調整可・大規模校対応</span></li>
+          <li class="fact"><span class="k">料金</span><span class="v">770円～</span><span class="s">生徒770円／社会人1,100円</span></li>
+          <li class="fact"><span class="k">催行人数</span><span class="v">20名～</span><span class="s">1クラス最大45名</span></li>
+          <li class="fact"><span class="k">受入</span><span class="v">通年</span><span class="s">英語対応可</span></li>
+          <li class="fact"><span class="k">オンライン</span><span class="v">対応可</span><span class="s">遠隔の学習ガイド</span></li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============== ② 地域ふれあい交流（詳細） ============== -->
+    <section class="prog-detail prog-detail--warm" id="prog-02" data-screen-label="地域ふれあい交流">
+      <div class="wrap">
+        <div class="prog-detail__grid reveal">
+          <div class="prog-detail__media px">
+            <img class="media-img" src="assets/community-02.jpg" alt="公民館でお年寄りと中高生がサーターアンダギーを囲む様子">
+          </div>
+          <div class="prog-detail__copy">
+            <span class="label-en">Program 02 — Community</span>
+            <span class="prog-detail__tag">LLFだけの体験</span>
+            <h2>地域ふれあい交流</h2>
+            <p class="lead">公民館で、地域のお年寄りと膝を交える時間。基地の隣で暮らしてきた人の声を、本人から直接聞きます。</p>
+            <p>サーターアンダギーとさんぴん茶を囲み、戦中・戦後の暮らし、基地とともに生きてきた日常を当事者の言葉で聞く。「道の駅かでな平和学習」で「見て・知った」ことを、人の声で受け取り直す——教科書や展示では伝わらない「生活者の現実」に触れる、LLFだけの体験です。</p>
+          </div>
+        </div>
+        <ul class="flow-facts reveal">
+          <li class="fact"><span class="k">所要時間</span><span class="v">90分</span><span class="s">公民館で実施</span></li>
+          <li class="fact"><span class="k">料金</span><span class="v">1,100円～</span><span class="s">大人2,200円</span></li>
+          <li class="fact"><span class="k">場所</span><span class="v">公民館</span><span class="s">嘉手納町内6か所</span></li>
+          <li class="fact"><span class="k">予約</span><span class="v">要事前</span><span class="s">事前予約制</span></li>
+          <li class="fact"><span class="k">付帯</span><span class="v">茶菓子付</span><span class="s">サーターアンダギー・さんぴん茶</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============== ③ オーダーメイド フィールドワーク（詳細） ============== -->
+    <section class="prog-detail prog-detail--plain" id="prog-03" data-screen-label="オーダーメイド フィールドワーク">
+      <div class="wrap">
+        <div class="prog-detail__grid reveal">
+          <div class="prog-detail__copy">
+            <span class="label-en">Program 03 — Fieldwork</span>
+            <span class="prog-detail__tag">行程まるごと設計</span>
+            <h2>オーダーメイド フィールドワーク</h2>
+            <p class="lead">学年・テーマ・所要時間に合わせて、行程をまるごと設計するプラン。道の駅かでなを起点に、まちを歩き、自分の問いを立てます。</p>
+            <p>嘉手納・読谷エリアを舞台に、学習内容やご要望に合わせて、行程の作成からLLFが伴走。基地の現実を歩いて体感し、見る・聞く・知るを自分のペースで深めます。大学ゼミの探究・ディスカッションのテーマに合わせた設計にも対応します。</p>
+          </div>
+          <div class="prog-detail__media px">
+            <!-- TODO: フィールドワークの実写真に差し替え（上陸地点・まち歩き） -->
+            <div class="img-ph" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+              <span class="cap">基地のまちを歩くフィールドワーク<br>（上陸地点・まち歩き）</span>
+            </div>
+          </div>
+        </div>
+        <ul class="flow-facts reveal">
+          <li class="fact"><span class="k">所要時間</span><span class="v">4／6時間</span><span class="s">行程に合わせて選択</span></li>
+          <li class="fact"><span class="k">料金</span><span class="v">3,000円～</span><span class="s">6時間5,000円（一律）</span></li>
+          <li class="fact"><span class="k">エリア</span><span class="v">嘉手納<span class="dot">・</span>読谷</span><span class="s">起点は道の駅かでな</span></li>
+          <li class="fact"><span class="k">進め方</span><span class="v">完全オーダー</span><span class="s">行程作成から相談</span></li>
+          <li class="fact"><span class="k">対応</span><span class="v">ゼミ・研究</span><span class="s">英語対応可</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============== 申し込み / パンフレット（CTA帯） ============== -->
+    <section class="apply" id="contact" data-screen-label="申し込み">
+      <div class="wrap wrap--narrow reveal">
+        <span class="label-en">Apply</span>
+        <h2>申し込みはこちらから</h2>
+        <p>「沖縄 平和ガイド in 道の駅かでな」のお申し込みは、専用フォームから受け付けています。フォームのご登録後、折り返し担当者からご連絡いたします。</p>
+        <ol class="apply-steps">
+          <li><span class="an">1</span><p>下記のボタンから予約フォームへ進みます。</p></li>
+          <li><span class="an">2</span><p>必要な情報を入力し、送信します。</p></li>
+          <li><span class="an">3</span><p>折り返し、スタッフからメールでご連絡します。</p></li>
+        </ol>
+        <div class="apply__actions">
+          <!-- TODO: 予約・問い合わせフォームのURLに差し替え -->
+          <a class="btn btn--on-navy" href="#">予約・問い合わせフォームへ <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== アクセス ============== -->
+    <section class="access" id="access" data-screen-label="アクセス">
+      <div class="wrap">
+        <div class="access__grid">
+          <div class="access__info reveal">
+            <span class="label-en">Access</span>
+            <h2>道の駅かでなへのアクセス</h2>
+            <dl>
+              <dt>所在地</dt>
+              <dd>〒904-0202<br>沖縄県中頭郡嘉手納町字屋良1026-3<br>道の駅かでな</dd>
+              <dt>駐車場</dt>
+              <dd>大型バス11台 駐車可能</dd>
+              <dt>設備</dt>
+              <dd>トイレ2箇所／展望所・展示室</dd>
+            </dl>
+          </div>
+          <div class="access__map reveal" data-d="1">
+            <iframe
+              title="道の駅かでな 周辺地図"
+              src="https://maps.google.com/maps?q=%E9%81%93%E3%81%AE%E9%A7%85%E3%81%8B%E3%81%A7%E3%81%AA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============== フッター ============== -->
+  <footer class="site-footer" data-screen-label="フッター">
+    <div class="footer__bloom" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="mark">LLF</span>
+          <span class="mark-sub">Look · Listen · Find out</span>
+          <p>見る・聞く・知る。道の駅かでなを拠点に、嘉手納の「いま」を現場で受け取る平和学習をご案内します。</p>
+        </div>
+        <div class="footer__col">
+          <h5>Menu</h5>
+          <ul>
+            <li><a href="#programs">プログラム</a></li>
+            <li><a href="#flow">学びの流れ</a></li>
+            <li><a href="#place">道の駅かでな</a></li>
+            <li><a href="#access">アクセス</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="#contact">予約・お問い合わせ</a></li>
+            <li><address>沖縄県中頭郡嘉手納町<br>字屋良1026-3 道の駅かでな</address></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <small>© 2026 LLF — 沖縄・嘉手納 平和学習プログラム</small>
+        <small>Look · Listen · Find out</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ヘッダー：スクロールで白＋影
+    const header = document.getElementById('header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ハンバーガーメニュー（モバイルドロワー）
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const setNav = (open) => {
+      document.body.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      mobileNav.setAttribute('aria-hidden', String(!open));
+    };
+    navToggle.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
+    mobileNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setNav(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setNav(false); });
+
+    // モーション抑制の尊重
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ヒーロー入場：可視状態をベースに、intro クラスで1語ずつ出現。
+    if (!reduce) {
+      requestAnimationFrame(() => document.body.classList.add('intro'));
+      setTimeout(() => document.body.classList.remove('intro'), 2600);
+    }
+
+    // スクロール演出（IntersectionObserver）
+    if (!reduce) {
+      // 初期ビューポート内の .reveal は常に表示。下方の .reveal だけ arm（隠す）して出現させる。
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.remove('armed'); e.target.classList.add('in'); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top > window.innerHeight * 0.9) { el.classList.add('armed'); io.observe(el); }
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+    }
+  </script>
+</body>
+</html>
