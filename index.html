@@ -215,17 +215,6 @@
 
   /* ---------- 写真メディア（image-slot を本番の <img> に置換） ---------- */
   .media-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  /* 写真未設定枠：差し替え前提の上品なプレースホルダー */
-  .img-ph {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 10px; text-align: center; padding: 24px; box-sizing: border-box;
-    color: var(--ink-soft);
-    background:
-      radial-gradient(120% 100% at 50% 0%, oklch(96% 0.006 90) 0%, oklch(90% 0.03 70 / 0.55) 100%);
-  }
-  .img-ph svg { opacity: .4; }
-  .img-ph .cap { font-size: var(--text-sm); max-width: 88%; line-height: 1.6; }
 
   /* ===========================================================
      ヘッダー（透明 → スクロールで白＋影）
@@ -824,7 +813,7 @@
           <article class="pcard pcard--01 reveal">
             <div class="pcard__media">
               <span class="pcard__num">01</span>
-              <img class="media-img" src="assets/hero-kadena-view.jpg" alt="展望所から嘉手納基地を望む眺め">
+              <img class="media-img" src="assets/observatory-students.png" alt="展望所で嘉手納基地を見学する生徒たち">
             </div>
             <div class="pcard__body">
               <span class="badge-base">道の駅かでなで開催</span>
@@ -856,11 +845,7 @@
           <article class="pcard pcard--03 reveal" data-d="2">
             <div class="pcard__media">
               <span class="pcard__num">03</span>
-              <!-- TODO: フィールドワークの実写真に差し替え（基地周辺・まち歩き） -->
-              <div class="img-ph" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                <span class="cap">フィールドワークの様子<br>（基地周辺・まち歩き）</span>
-              </div>
+              <img class="media-img" src="assets/fieldwork-river.jpg" alt="嘉手納・読谷エリアのフィールドワーク（比謝川周辺）">
             </div>
             <div class="pcard__body">
               <span class="badge-diff">行程まるごと設計</span>
@@ -903,11 +888,7 @@
           <li class="step reveal" data-d="1">
             <div class="step__media">
               <span class="step__badge">02</span>
-              <!-- TODO: 学習展示室（3F）の実写真に差し替え -->
-              <div class="img-ph" aria-hidden="true">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-                <span class="cap">学習展示室（3F）</span>
-              </div>
+              <img class="media-img" src="assets/exhibit-room.jpg" alt="2023年リニューアルの学習展示室（3F）内観">
             </div>
             <div class="step__body">
               <span class="step__floor">3F ・ 学習展示室 ・ 20分</span>
@@ -921,7 +902,7 @@
           <li class="step reveal" data-d="2">
             <div class="step__media">
               <span class="step__badge">03</span>
-              <img class="media-img" src="assets/observatory-students.png" alt="展望所（4F）から嘉手納基地を見学する生徒たち">
+              <img class="media-img" src="assets/observatory-deck.jpg" alt="4F展望所のトラス屋根の下から嘉手納基地・飛行場を望む">
             </div>
             <div class="step__body">
               <span class="step__floor">4F ・ 展望所 ・ 30分</span>
@@ -982,11 +963,7 @@
             <p>嘉手納・読谷エリアを舞台に、学習内容やご要望に合わせて、行程の作成からLLFが伴走。基地の現実を歩いて体感し、見る・聞く・知るを自分のペースで深めます。大学ゼミの探究・ディスカッションのテーマに合わせた設計にも対応します。</p>
           </div>
           <div class="prog-detail__media px">
-            <!-- TODO: フィールドワークの実写真に差し替え（上陸地点・まち歩き） -->
-            <div class="img-ph" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-              <span class="cap">基地のまちを歩くフィールドワーク<br>（上陸地点・まち歩き）</span>
-            </div>
+            <img class="media-img" src="assets/fieldwork-river.jpg" alt="嘉手納・読谷エリアのフィールドワーク（比謝川周辺）">
           </div>
         </div>
         <ul class="flow-facts reveal">
