@@ -398,6 +398,10 @@
   .hero__loc .meta .l { font-family: var(--font-label); text-transform: uppercase; letter-spacing: .18em; font-size: 9px; color: var(--teal-on-dark); }
   .hero__loc .meta .t { font-family: var(--font-serif); font-weight: 700; color: var(--ink-inv); font-size: 15px; letter-spacing: .04em; margin-top: 3px; }
   .hero__loc .meta .s { font-family: var(--font-sans); color: oklch(96% 0.01 95 / 0.72); font-size: 11px; margin-top: 2px; letter-spacing: .02em; }
+  /* 広い画面では所在地カードを右隅から中央寄りへ引き込み、チップ列の上に持ち上げる */
+  @media (min-width: 1100px) {
+    .hero__loc { right: clamp(var(--gutter), 7vw, 140px); bottom: clamp(92px, 13vh, 150px); }
+  }
 
   .hero__scroll {
     position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
