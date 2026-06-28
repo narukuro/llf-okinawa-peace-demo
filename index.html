@@ -640,9 +640,9 @@
   .omake strong { font-weight: 700; }
 
   /* 料金ブロック */
-  .price-block { background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-2) var(--space-6); margin: var(--space-6) 0 var(--space-4); max-width: 440px; }
-  .price-row { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
-  .price-row:last-child { border-bottom: none; }
+  .price-block { background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--radius-md); margin: var(--space-6) 0 var(--space-4); display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+  .price-row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-6); border-right: 1px solid var(--line); }
+  .price-row:last-child { border-right: none; }
   .price-label { font-size: var(--text-base); color: var(--ink-soft); }
   .price-value { font-family: var(--font-latin); font-weight: 600; font-size: var(--text-lg); color: var(--ink); font-variant-numeric: tabular-nums; }
   .price-value span { font-size: var(--text-sm); font-weight: 400; color: var(--ink-soft); }
@@ -651,7 +651,7 @@
   .min-note { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.7; margin: 0 0 var(--space-6); max-width: 42em; }
 
   /* コース（半日／1日） */
-  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); margin: var(--space-6) 0; max-width: 480px; }
+  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); margin: var(--space-6) 0; }
   .course-box { background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; }
   .course-box .c-label { font-size: var(--text-sm); color: var(--ink-soft); margin-bottom: 6px; }
   .course-box .c-time { font-family: var(--font-serif); font-weight: 700; font-size: var(--text-xl); color: var(--ink); margin-bottom: 4px; }
@@ -665,7 +665,7 @@
 
   /* プログラム別 申し込みボタン */
   .apply-inline { margin-top: var(--space-8); }
-  .apply-inline .btn { width: 100%; max-width: 440px; justify-content: center; }
+  .apply-inline .btn { width: 100%; justify-content: center; }
   .apply-inline .note { font-size: var(--text-xs); color: var(--ink-soft); margin: var(--space-3) 0 0; }
   .prog-detail--warm .keyword { background: oklch(98.5% 0.004 95 / 0.6); }
 
@@ -674,6 +674,47 @@
   .target .section-head { margin-bottom: var(--space-8); }
   .target__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--grid-gap); }
   .target__item { background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; font-size: var(--text-base); color: var(--ink); font-weight: 500; }
+
+  /* ===========================================================
+     申し込み・お問い合わせ（2カード：申込＝Googleフォーム ／ 問い合わせ＝メールフォーム）
+     =========================================================== */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); margin-top: var(--space-12); align-items: stretch; }
+  .contact-card { background: var(--surface-card); border-radius: var(--radius-lg); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; }
+  .contact-card h3 { font-size: var(--text-xl); color: var(--ink); margin-bottom: var(--space-3); }
+  .contact-card > p { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.85; margin: 0 0 var(--space-6); max-width: none; }
+  .contact-card .btn { width: 100%; justify-content: center; margin-top: auto; }
+  .contact-card .note { font-size: var(--text-xs); color: var(--ink-soft); margin: var(--space-3) 0 0; }
+  .contact-form { display: flex; flex-direction: column; gap: var(--space-4); margin-top: auto; }
+  .contact-form label { display: flex; flex-direction: column; gap: 5px; font-size: var(--text-xs); color: var(--ink-soft); letter-spacing: 0.04em; }
+  .contact-form input, .contact-form textarea {
+    font-family: var(--font-sans); font-size: var(--text-base); color: var(--ink);
+    background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-sm);
+    padding: 10px 12px; width: 100%; line-height: 1.6;
+  }
+  .contact-form textarea { resize: vertical; min-height: 96px; }
+  .contact-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: var(--teal); }
+  .contact-form button { margin-top: var(--space-2); }
+  .form-msg { font-size: var(--text-sm); margin: var(--space-3) 0 0; line-height: 1.6; }
+  .form-msg.ok { color: var(--teal-deep); }
+  .form-msg.ng { color: #b3261e; }
+
+  /* ===========================================================
+     note 最新記事（RSS・クライアントサイド取得）
+     =========================================================== */
+  .notes { background: var(--bg-sub); padding-block: var(--section-y); }
+  .notes .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-6); max-width: none; }
+  .notes__more { font-size: var(--text-sm); color: var(--teal-deep); text-decoration: none; white-space: nowrap; border-bottom: 1.5px solid transparent; padding-bottom: 2px; transition: border-color .2s ease; }
+  .notes__more:hover { border-bottom-color: var(--teal); }
+  .notes__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+  .ncard { display: flex; flex-direction: column; background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; box-shadow: var(--shadow-card); transition: box-shadow .25s ease, border-color .25s ease, transform .25s ease; }
+  .ncard:hover { box-shadow: var(--shadow-hover); border-color: var(--teal); transform: translateY(-3px); }
+  .ncard__media { aspect-ratio: 16 / 9; background: var(--bg-sub) center/cover no-repeat; position: relative; }
+  .ncard__body { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  .ncard__date { font-family: var(--font-latin); font-size: var(--text-xs); color: var(--ink-soft); letter-spacing: 0.04em; }
+  .ncard__title { font-family: var(--font-serif); font-weight: 700; font-size: var(--text-base); color: var(--ink); line-height: 1.6; }
+  .ncard__excerpt { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.8; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .notes__state { color: var(--ink-soft); font-size: var(--text-sm); }
 
   /* ===========================================================
      申し込み / CTA帯（navy）
@@ -745,6 +786,8 @@
     .prog-detail__grid { grid-template-columns: 1fr; }
     .place__intro { gap: var(--space-12); }
     .place__photo { aspect-ratio: 16 / 10; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .notes__grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 901px) and (max-width: 1100px) {
     .pcard__body { padding: var(--space-6); }
@@ -756,6 +799,10 @@
     .flow-facts { grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--space-6); }
     .apply__actions .btn { justify-content: center; }
     .footer__bottom { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+    .price-block { grid-template-columns: 1fr; }
+    .price-row { border-right: none; border-bottom: 1px solid var(--line); }
+    .price-row:last-child { border-bottom: none; }
+    .notes__grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -772,7 +819,7 @@
         <ul class="nav-links">
           <li><a href="#programs">プログラム</a></li>
           <li><a href="#target">対象</a></li>
-          <li><a href="#access">アクセス</a></li>
+          <li><a href="#notes">note</a></li>
         </ul>
         <a class="header-cta" href="#contact">お問い合わせ</a>
       </nav>
@@ -791,7 +838,7 @@
       <a href="#programs">プログラム</a>
       <a href="#target">対象</a>
       <a href="#place">道の駅かでな</a>
-      <a href="#access">アクセス</a>
+      <a href="#notes">note</a>
       <a class="mobile-nav__cta" href="#contact">お問い合わせ</a>
       <p class="mobile-nav__meta">沖縄県中頭郡嘉手納町 字屋良1026-3<br>道の駅かでな</p>
     </nav>
@@ -994,9 +1041,7 @@
             <span class="keyword">ガイド同行</span>
           </div>
           <div class="apply-inline">
-            <!-- TODO: ①未来型平和学習のGoogleフォームURLに差し替え -->
-            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
-            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+            <a class="btn btn--primary" href="#contact">お申し込み・お問い合わせはこちら <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -1041,9 +1086,7 @@
             <span class="keyword">戦後の記憶</span>
           </div>
           <div class="apply-inline">
-            <!-- TODO: ②地域ふれあい交流のGoogleフォームURLに差し替え -->
-            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
-            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+            <a class="btn btn--primary" href="#contact">お申し込み・お問い合わせはこちら <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -1086,9 +1129,7 @@
             <span class="keyword">日程相談可</span>
           </div>
           <div class="apply-inline">
-            <!-- TODO: ③オーダーメイドプランのGoogleフォームURLに差し替え -->
-            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
-            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+            <a class="btn btn--primary" href="#contact">お申し込み・お問い合わせはこちら <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
       </div>
@@ -1112,43 +1153,54 @@
       </div>
     </section>
 
-    <!-- ============== お問い合わせ（CTA帯） ============== -->
-    <section class="apply" id="contact" data-screen-label="お問い合わせ">
-      <div class="wrap wrap--narrow reveal">
-        <span class="label-en">Contact</span>
-        <h2>あなたの団体だけの<br>平和学習を、一緒に。</h2>
-        <p>まずはお気軽にご相談ください。目的・人数・日程に合わせてご提案します。各プログラムのお申し込みは、上記の専用フォームから受け付けています。</p>
-        <div class="apply__actions">
-          <!-- TODO: お問い合わせ先（メール／フォームURL）に差し替え -->
-          <a class="btn btn--on-navy" href="#">お問い合わせ <span class="arrow" aria-hidden="true">→</span></a>
+    <!-- ============== note 最新記事（RSSで自動取得） ============== -->
+    <section class="notes" id="notes" data-screen-label="note最新記事">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="label-en">From note</span>
+            <h2>沖縄の今を、現場から</h2>
+            <p class="lead">note「LLF OKINAWA」で、暮らしの中から見える沖縄の今を発信しています。</p>
+          </div>
+          <a class="notes__more" href="https://note.com/witty_okapi1304" target="_blank" rel="noopener">noteで読む →</a>
+        </div>
+        <div class="notes__grid" id="notesGrid">
+          <p class="notes__state" id="notesState">記事を読み込んでいます…</p>
         </div>
       </div>
     </section>
 
-    <!-- ============== アクセス ============== -->
-    <section class="access" id="access" data-screen-label="アクセス">
-      <div class="wrap">
-        <div class="access__grid">
-          <div class="access__info reveal">
-            <span class="label-en">Access</span>
-            <h2>道の駅かでなへのアクセス</h2>
-            <dl>
-              <dt>所在地</dt>
-              <dd>〒904-0202<br>沖縄県中頭郡嘉手納町字屋良1026-3<br>道の駅かでな</dd>
-              <dt>駐車場</dt>
-              <dd>大型バス11台 駐車可能</dd>
-              <dt>設備</dt>
-              <dd>トイレ2箇所／展望所・展示室</dd>
-            </dl>
+    <!-- ============== 申し込み・お問い合わせ（CTA帯） ============== -->
+    <section class="apply" id="contact" data-screen-label="申し込み・お問い合わせ">
+      <div class="wrap reveal">
+        <span class="label-en">Apply &amp; Contact</span>
+        <h2>申し込み・お問い合わせ</h2>
+        <p>各プログラムへのお申し込みは「申し込みフォーム」から、その他のご相談・ご質問は「お問い合わせフォーム」からお気軽にどうぞ。</p>
+        <div class="contact-grid">
+
+          <!-- 申し込み（Googleフォーム） -->
+          <div class="contact-card">
+            <h3>プログラムのお申し込み</h3>
+            <p>目的・人数・日程に合わせてご提案します。下記フォームからお申し込みください。</p>
+            <!-- TODO: 申し込みGoogleフォームのURLに差し替え（href） -->
+            <a class="btn btn--primary" href="#" target="_blank" rel="noopener">申し込みフォームへ（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
+            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
           </div>
-          <div class="access__map reveal" data-d="1">
-            <iframe
-              title="道の駅かでな 周辺地図"
-              src="https://maps.google.com/maps?q=%E9%81%93%E3%81%AE%E9%A7%85%E3%81%8B%E3%81%A7%E3%81%AA&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen></iframe>
+
+          <!-- お問い合わせ（メールフォーム／ラッコサーバーの contact.php で送信） -->
+          <div class="contact-card">
+            <h3>お問い合わせ</h3>
+            <p>ご相談・ご質問はこちらから。担当者より折り返しご連絡いたします。</p>
+            <form class="contact-form" id="contactForm" action="contact.php" method="post" novalidate>
+              <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <label>お名前<input type="text" name="name" required autocomplete="name"></label>
+              <label>メールアドレス<input type="email" name="email" required autocomplete="email"></label>
+              <label>お問い合わせ内容<textarea name="message" required></textarea></label>
+              <button type="submit" class="btn btn--primary">送信する <span class="arrow" aria-hidden="true">→</span></button>
+              <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+            </form>
           </div>
+
         </div>
       </div>
     </section>
@@ -1171,7 +1223,8 @@
             <li><a href="#programs">プログラム</a></li>
             <li><a href="#target">対象</a></li>
             <li><a href="#place">道の駅かでな</a></li>
-            <li><a href="#access">アクセス</a></li>
+            <li><a href="#notes">note 最新記事</a></li>
+            <li><a href="#contact">申し込み・お問い合わせ</a></li>
           </ul>
         </div>
         <div class="footer__col">
@@ -1234,6 +1287,73 @@
     } else {
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
     }
+
+    // ===== note 最新記事（RSS をクライアントサイドで取得して表示） =====
+    // note.com の RSS はブラウザから直接取得できない（CORS）ため、RSS→JSON 変換API経由で取得。
+    // ラッコサーバーに移した後、より堅牢にしたい場合は PHP 側で取得・キャッシュに置き換え可。
+    (function () {
+      const grid = document.getElementById('notesGrid');
+      const state = document.getElementById('notesState');
+      if (!grid) return;
+      const NOTE_RSS = 'https://note.com/witty_okapi1304/rss';
+      const ENDPOINT = 'https://api.rss2json.com/v1/api.json?count=6&rss_url=' + encodeURIComponent(NOTE_RSS);
+      const MAX = 3;
+      const stripHtml = (html) => { const d = document.createElement('div'); d.innerHTML = html || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
+      const fmtDate = (s) => { try { const d = new Date(s); if (isNaN(d)) return ''; return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0'); } catch (e) { return ''; } };
+      const firstImg = (html) => { const m = /<img[^>]+src=["']([^"']+)["']/i.exec(html || ''); return m ? m[1] : ''; };
+      const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+      fetch(ENDPOINT)
+        .then((r) => r.ok ? r.json() : Promise.reject(r.status))
+        .then((data) => {
+          const items = (data && data.items) ? data.items.slice(0, MAX) : [];
+          if (!items.length) throw new Error('no items');
+          grid.innerHTML = items.map((it) => {
+            const img = it.thumbnail || firstImg(it.content || it.description);
+            const date = fmtDate(it.pubDate);
+            const excerpt = stripHtml(it.description || it.content).slice(0, 90);
+            const media = img
+              ? '<div class="ncard__media" style="background-image:url(\'' + esc(img) + '\')"></div>'
+              : '<div class="ncard__media"></div>';
+            return '<a class="ncard" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
+              media +
+              '<div class="ncard__body">' +
+              (date ? '<span class="ncard__date">' + esc(date) + '</span>' : '') +
+              '<span class="ncard__title">' + esc(it.title || '') + '</span>' +
+              '<p class="ncard__excerpt">' + esc(excerpt) + '…</p>' +
+              '</div></a>';
+          }).join('');
+        })
+        .catch(() => {
+          if (state) {
+            state.innerHTML = '記事の読み込みに失敗しました。<a href="https://note.com/witty_okapi1304" target="_blank" rel="noopener" style="color:var(--teal-deep)">noteで読む →</a>';
+          }
+        });
+    })();
+
+    // ===== お問い合わせフォーム =====
+    // 本番（ラッコサーバー）では contact.php に送信。GitHub Pages のデモでは PHP が動かないため、
+    // デモ時のみ送信をプレビュー表示に置き換える。
+    (function () {
+      const form = document.getElementById('contactForm');
+      const msg = document.getElementById('formMsg');
+      if (!form) return;
+      const isDemo = /github\.io$/.test(location.hostname) || location.protocol === 'file:';
+      form.addEventListener('submit', (e) => {
+        if (!form.checkValidity()) return; // ブラウザ標準の必須チェックに任せる
+        if (isDemo) {
+          e.preventDefault();
+          if (msg) { msg.className = 'form-msg ok'; msg.textContent = '（デモ表示）サーバー設置後に送信できるようになります。'; }
+        }
+        // 本番では通常どおり contact.php へ送信される
+      });
+      // contact.php からの戻り（?sent=1 / ?sent=0）を表示
+      const sent = new URLSearchParams(location.search).get('sent');
+      if (sent && msg) {
+        if (sent === '1') { msg.className = 'form-msg ok'; msg.textContent = '送信しました。折り返しご連絡いたします。'; }
+        else { msg.className = 'form-msg ng'; msg.textContent = '送信に失敗しました。お手数ですが時間をおいて再度お試しください。'; }
+      }
+    })();
   </script>
 </body>
 </html>
