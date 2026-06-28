@@ -1288,47 +1288,42 @@
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
     }
 
-    // ===== note 最新記事（RSS をクライアントサイドで取得して表示） =====
-    // note.com の RSS はブラウザから直接取得できない（CORS）ため、RSS→JSON 変換API経由で取得。
-    // ラッコサーバーに移した後、より堅牢にしたい場合は PHP 側で取得・キャッシュに置き換え可。
+    // ===== note 最新記事 =====
+    // 本番(ラッコサーバー): 同一オリジンの notes.php が note の RSS をサーバー側で取得→JSON で返す（記事追加に自動反応）。
+    // デモ(GitHub Pages): PHP が動かないため、取得に失敗したら下の静的サンプル（現在の記事）を表示してデザインを確認できるようにする。
     (function () {
       const grid = document.getElementById('notesGrid');
       const state = document.getElementById('notesState');
       if (!grid) return;
-      const NOTE_RSS = 'https://note.com/witty_okapi1304/rss';
-      const ENDPOINT = 'https://api.rss2json.com/v1/api.json?count=6&rss_url=' + encodeURIComponent(NOTE_RSS);
-      const MAX = 3;
-      const stripHtml = (html) => { const d = document.createElement('div'); d.innerHTML = html || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
-      const fmtDate = (s) => { try { const d = new Date(s); if (isNaN(d)) return ''; return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0'); } catch (e) { return ''; } };
-      const firstImg = (html) => { const m = /<img[^>]+src=["']([^"']+)["']/i.exec(html || ''); return m ? m[1] : ''; };
-      const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-
-      fetch(ENDPOINT)
-        .then((r) => r.ok ? r.json() : Promise.reject(r.status))
-        .then((data) => {
-          const items = (data && data.items) ? data.items.slice(0, MAX) : [];
-          if (!items.length) throw new Error('no items');
-          grid.innerHTML = items.map((it) => {
-            const img = it.thumbnail || firstImg(it.content || it.description);
-            const date = fmtDate(it.pubDate);
-            const excerpt = stripHtml(it.description || it.content).slice(0, 90);
-            const media = img
-              ? '<div class="ncard__media" style="background-image:url(\'' + esc(img) + '\')"></div>'
-              : '<div class="ncard__media"></div>';
-            return '<a class="ncard" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
-              media +
-              '<div class="ncard__body">' +
-              (date ? '<span class="ncard__date">' + esc(date) + '</span>' : '') +
-              '<span class="ncard__title">' + esc(it.title || '') + '</span>' +
-              '<p class="ncard__excerpt">' + esc(excerpt) + '…</p>' +
-              '</div></a>';
-          }).join('');
-        })
-        .catch(() => {
-          if (state) {
-            state.innerHTML = '記事の読み込みに失敗しました。<a href="https://note.com/witty_okapi1304" target="_blank" rel="noopener" style="color:var(--teal-deep)">noteで読む →</a>';
-          }
-        });
+      const FALLBACK = [
+        { title: '沖縄に暮らす私たちの毎日を伝えます。そこから見えるもの。あなたも見てみませんか。', link: 'https://note.com/witty_okapi1304/n/n45aaef68800e', thumbnail: 'https://assets.st-note.com/production/uploads/images/274033076/rectangle_large_type_2_dc3b6dcdb5842c9725f2e2743c5a7989.png?width=800', date: '2026.05.08', excerpt: 'きのうはお友達とランチの約束をして地元の馴染みの美味しいお店でたらふく食べてきました。付け合わせに出てきたのが、「ンジャナバーの和え物」久々に食べた～！美味しい！体が生き返る！これ' },
+        { title: '沖縄のこと。私のこと。', link: 'https://note.com/witty_okapi1304/n/n762b4fa82453', thumbnail: 'https://assets.st-note.com/production/uploads/images/273410437/rectangle_large_type_2_1258ded650d79c6b324413b55dd44bf2.jpeg?width=800', date: '2026.05.07', excerpt: '昭和最後のギャル。そう呼ばれた私たちはバブル絶頂期とバブルのはじけるど真ん中にいた。死語になった長いソバージュと今井美樹ばり真っ赤な口紅。体の線そのもののボディコン、ハイヒール、デ' },
+        { title: '沖縄平和学習＝基地反対運動', link: 'https://note.com/witty_okapi1304/n/nc143cabababf', thumbnail: 'https://assets.st-note.com/production/uploads/images/273339461/rectangle_large_type_2_4e1a12c69e83274444d6691b2ca48460.jpeg?width=800', date: '2026.05.06', excerpt: 'いま、これが、現状なのだと思う。沖縄の平和学習のイメージがそこが定位置となってしまった。一体何が本当で、何が信頼出来て、誰を信じればいいのか。沖縄県以外の方はもちろん。沖縄県民も何' }
+      ];
+      const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const render = (items) => {
+        const list = (Array.isArray(items) ? items : []).slice(0, 3);
+        if (!list.length) {
+          if (state) state.innerHTML = '<a href="https://note.com/witty_okapi1304" target="_blank" rel="noopener" style="color:var(--teal-deep)">noteで読む →</a>';
+          return;
+        }
+        grid.innerHTML = list.map((it) => {
+          const media = it.thumbnail
+            ? '<div class="ncard__media" style="background-image:url(\'' + esc(it.thumbnail) + '\')"></div>'
+            : '<div class="ncard__media"></div>';
+          return '<a class="ncard" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
+            media +
+            '<div class="ncard__body">' +
+            (it.date ? '<span class="ncard__date">' + esc(it.date) + '</span>' : '') +
+            '<span class="ncard__title">' + esc(it.title) + '</span>' +
+            '<p class="ncard__excerpt">' + esc(it.excerpt) + '…</p>' +
+            '</div></a>';
+        }).join('');
+      };
+      fetch('notes.php', { headers: { 'Accept': 'application/json' } })
+        .then((r) => r.ok ? r.json() : Promise.reject())
+        .then((items) => render(Array.isArray(items) && items.length ? items : FALLBACK))
+        .catch(() => render(FALLBACK));
     })();
 
     // ===== お問い合わせフォーム =====
