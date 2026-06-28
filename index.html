@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>沖縄・嘉手納の平和学習プログラム｜道の駅かでな LLF</title>
-<meta name="description" content="嘉手納町・道の駅かでなを拠点にした教育旅行向け平和学習プログラム。展望所から基地を一望し、見る・聞く・知るで「ほんとの沖縄」に触れる。修学旅行・教育旅行のご予約はLLFへ。">
+<title>平和学習 沖縄｜学ぶ。考える。次の一歩へ。 OKINAWA PEACE LEARNING</title>
+<meta name="description" content="沖縄戦の記憶から、現在の基地問題へ。地域の人々の声へ。知識を体験に変える、これからの平和学習。教育旅行・修学旅行・研修旅行・一般団体向け、オーダーメイド対応。">
 <meta name="theme-color" content="#26334D">
 <link rel="canonical" href="https://example.com/">
 
 <!-- Open Graph / Twitter -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="沖縄・嘉手納の平和学習プログラム｜道の駅かでな LLF">
-<meta property="og:description" content="見る・聞く・知る ほんとの沖縄。道の駅かでなを拠点にした教育旅行向け平和学習プログラム。">
+<meta property="og:title" content="平和学習 沖縄｜学ぶ。考える。次の一歩へ。">
+<meta property="og:description" content="沖縄戦の記憶から、現在の基地問題へ。地域の人々の声へ。知識を体験に変える、これからの平和学習です。">
 <meta property="og:image" content="assets/hero-kadena-view.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -231,8 +231,8 @@
   }
   .brand { display: flex; align-items: baseline; gap: 12px; text-decoration: none; flex-shrink: 0; white-space: nowrap; }
   .brand .mark {
-    font-family: var(--font-latin); font-weight: 600; font-size: 1.5rem;
-    letter-spacing: 0.06em; color: var(--ink-inv); white-space: nowrap;
+    font-family: var(--font-serif); font-weight: 700; font-size: 1.15rem;
+    letter-spacing: 0.1em; color: var(--ink-inv); white-space: nowrap;
     transition: color .3s ease;
   }
   .brand .mark-sub {
@@ -388,9 +388,8 @@
   /* 入場演出：可視状態をベースにし、body.intro のときだけ隠れて出現する。 */
   body.intro .hero h1 .word { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
   body.intro .hero h1 .word:nth-child(1) { animation-delay: .15s; }
-  body.intro .hero h1 .word:nth-child(3) { animation-delay: .45s; }
-  body.intro .hero h1 .word:nth-child(5) { animation-delay: .75s; }
-  body.intro .hero h1 .rest { animation: rise .7s cubic-bezier(.2,.7,.2,1) .98s both; }
+  body.intro .hero h1 .word:nth-child(2) { animation-delay: .4s; }
+  body.intro .hero h1 .word:nth-child(3) { animation-delay: .65s; }
   body.intro .hero__sub { animation: fade .8s ease 1.2s both; }
   body.intro .hero__actions { animation: fade .8s ease 1.35s both; }
   body.intro .hero .chips { animation: fade .8s ease 1.5s both; }
@@ -612,6 +611,71 @@
   .prog-detail__copy p { color: var(--ink-soft); font-size: var(--text-base); line-height: 1.9; margin: 0; max-width: 36em; }
 
   /* ===========================================================
+     プログラム共通パーツ（改訂版コンテンツ）
+     =========================================================== */
+  /* プログラムカードのサブ見出し */
+  .pcard__sub { font-size: var(--text-sm); color: var(--ink-soft); margin: -2px 0 0; line-height: 1.5; }
+
+  /* 訪問スポット */
+  .spotlist { background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-6); }
+  .spotlist__label { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.64rem; color: var(--ink-soft); margin-bottom: 6px; }
+  .spotlist__note { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.7; margin: 0 0 var(--space-4); }
+  .spotlist ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .spotlist li { display: flex; align-items: center; gap: 10px; font-size: var(--text-base); color: var(--ink); font-weight: 500; }
+  .spotlist li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+  /* ガイド同行バッジ */
+  .guide-badge { display: flex; align-items: center; gap: 12px; background: oklch(58% 0.10 195 / 0.10); border: 1px solid oklch(58% 0.10 195 / 0.25); border-radius: var(--radius-md); padding: var(--space-4) var(--space-6); }
+  .guide-badge svg { width: 22px; height: 22px; color: var(--teal-deep); flex-shrink: 0; }
+  .guide-badge p { margin: 0; font-size: var(--text-sm); color: var(--teal-deep); font-weight: 500; }
+
+  /* 引用 */
+  .quote { border-left: 3px solid var(--teal); padding: var(--space-2) var(--space-6); margin: var(--space-6) 0; }
+  .quote p { font-family: var(--font-serif); font-weight: 700; font-size: var(--text-lg); color: var(--ink); line-height: 1.8; margin: 0; max-width: none; }
+
+  /* おまけ（茶菓子・特典） */
+  .omake { display: flex; align-items: center; gap: 12px; background: oklch(90% 0.03 70 / 0.45); border: 1px solid oklch(90% 0.03 70); border-radius: var(--radius-md); padding: var(--space-4) var(--space-6); margin: var(--space-6) 0; }
+  .omake svg { width: 22px; height: 22px; color: var(--teal-deep); flex-shrink: 0; }
+  .omake p { margin: 0; font-size: var(--text-sm); color: var(--ink); line-height: 1.7; max-width: none; }
+  .omake strong { font-weight: 700; }
+
+  /* 料金ブロック */
+  .price-block { background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-2) var(--space-6); margin: var(--space-6) 0 var(--space-4); max-width: 440px; }
+  .price-row { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--line); }
+  .price-row:last-child { border-bottom: none; }
+  .price-label { font-size: var(--text-base); color: var(--ink-soft); }
+  .price-value { font-family: var(--font-latin); font-weight: 600; font-size: var(--text-lg); color: var(--ink); font-variant-numeric: tabular-nums; }
+  .price-value span { font-size: var(--text-sm); font-weight: 400; color: var(--ink-soft); }
+
+  /* 注記 */
+  .min-note { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.7; margin: 0 0 var(--space-6); max-width: 42em; }
+
+  /* コース（半日／1日） */
+  .course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); margin: var(--space-6) 0; max-width: 480px; }
+  .course-box { background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; }
+  .course-box .c-label { font-size: var(--text-sm); color: var(--ink-soft); margin-bottom: 6px; }
+  .course-box .c-time { font-family: var(--font-serif); font-weight: 700; font-size: var(--text-xl); color: var(--ink); margin-bottom: 4px; }
+  .course-box .c-price { font-family: var(--font-latin); font-weight: 600; font-size: var(--text-lg); color: var(--teal-deep); }
+  .course-box .c-price span { font-size: var(--text-sm); font-weight: 400; color: var(--ink-soft); }
+  .course-box .c-note { font-size: var(--text-xs); color: var(--ink-soft); margin-top: 4px; }
+
+  /* キーワード */
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-6); }
+  .keyword { font-size: var(--text-xs); padding: 5px 12px; border-radius: var(--radius-sm); background: var(--bg-sub); color: var(--ink-soft); border: 1px solid var(--line); }
+
+  /* プログラム別 申し込みボタン */
+  .apply-inline { margin-top: var(--space-8); }
+  .apply-inline .btn { width: 100%; max-width: 440px; justify-content: center; }
+  .apply-inline .note { font-size: var(--text-xs); color: var(--ink-soft); margin: var(--space-3) 0 0; }
+  .prog-detail--warm .keyword { background: oklch(98.5% 0.004 95 / 0.6); }
+
+  /* 対象セクション */
+  .target { background: var(--bg); padding-block: var(--section-y); }
+  .target .section-head { margin-bottom: var(--space-8); }
+  .target__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: var(--grid-gap); }
+  .target__item { background: var(--bg-sub); border: 1px solid var(--line); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; font-size: var(--text-base); color: var(--ink); font-weight: 500; }
+
+  /* ===========================================================
      申し込み / CTA帯（navy）
      =========================================================== */
   .apply { background: var(--navy); color: var(--ink-inv); padding-block: var(--section-y); }
@@ -654,7 +718,7 @@
             mask-image: radial-gradient(closest-side at 50% 52%, #000 0%, rgba(0,0,0,0.6) 40%, transparent 72%);
   }
   .footer__top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: var(--space-16); padding-bottom: var(--space-16); border-bottom: 1px solid oklch(96% 0.01 95 / 0.14); }
-  .footer__brand .mark { font-family: var(--font-latin); font-weight: 600; font-size: 1.6rem; letter-spacing: 0.06em; color: var(--ink-inv); display: block; }
+  .footer__brand .mark { font-family: var(--font-serif); font-weight: 700; font-size: 1.3rem; letter-spacing: 0.1em; color: var(--ink-inv); display: block; }
   .footer__brand .mark-sub { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.6rem; color: var(--teal-on-dark); display: block; margin-top: 7px; }
   .footer__brand p { color: oklch(96% 0.01 95 / 0.7); font-size: var(--text-sm); line-height: 1.9; margin: var(--space-6) 0 0; max-width: 30em; }
   .footer__col h5 { font-family: var(--font-label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.64rem; color: var(--teal-on-dark); margin: 0 0 var(--space-6); font-weight: 600; }
@@ -700,17 +764,17 @@
   <!-- ============== ヘッダー ============== -->
   <header class="site-header" id="header">
     <div class="wrap">
-      <a class="brand" href="#top" aria-label="LLF ホーム">
-        <span class="mark">LLF</span>
-        <span class="mark-sub">Look · Listen · Find out</span>
+      <a class="brand" href="#top" aria-label="平和学習 沖縄 ホーム">
+        <span class="mark">平和学習　沖縄</span>
+        <span class="mark-sub">Okinawa Peace Learning</span>
       </a>
       <nav class="nav" aria-label="メインナビゲーション">
         <ul class="nav-links">
           <li><a href="#programs">プログラム</a></li>
-          <li><a href="#flow">学びの流れ</a></li>
+          <li><a href="#target">対象</a></li>
           <li><a href="#access">アクセス</a></li>
         </ul>
-        <a class="header-cta" href="#contact">予約・お問い合わせ</a>
+        <a class="header-cta" href="#contact">お問い合わせ</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span><span></span>
@@ -725,10 +789,10 @@
     </button>
     <nav aria-label="モバイルメニュー">
       <a href="#programs">プログラム</a>
-      <a href="#flow">学びの流れ</a>
+      <a href="#target">対象</a>
       <a href="#place">道の駅かでな</a>
       <a href="#access">アクセス</a>
-      <a class="mobile-nav__cta" href="#contact">予約・お問い合わせ</a>
+      <a class="mobile-nav__cta" href="#contact">お問い合わせ</a>
       <p class="mobile-nav__meta">沖縄県中頭郡嘉手納町 字屋良1026-3<br>道の駅かでな</p>
     </nav>
   </div>
@@ -744,25 +808,24 @@
       <div class="hero__veil" aria-hidden="true"></div>
       <div class="wrap hero__inner">
         <div class="hero__content">
-          <span class="label-en">Educational Travel Program</span>
+          <span class="label-en">Okinawa Peace Learning</span>
           <h1>
-            <span class="triad">
-              <span class="word">見る</span><span class="dot">・</span><span class="word">聞く</span><span class="dot">・</span><span class="word">知る</span>
-            </span>
-            <span class="rest">ほんとの沖縄</span>
+            <span class="word">学ぶ。</span><span class="word">考える。</span><span class="word">次の一歩へ。</span>
           </h1>
-          <p class="hero__sub">実践！道の駅かでなで平和学習</p>
+          <p class="hero__sub">沖縄戦の記憶から、現在の基地問題へ。地域の人々の声へ。<br>知識を体験に変える、これからの平和学習です。</p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#contact">
-              予約・お問い合わせ
+              お問い合わせ
               <span class="arrow" aria-hidden="true">→</span>
             </a>
             <a class="btn btn--ghost-dark" href="#programs">プログラムを見る</a>
           </div>
           <ul class="chips">
-            <li class="chip chip--on-dark">小・中・高・大 対応</li>
-            <li class="chip chip--on-dark">1クラス専属ガイド</li>
-            <li class="chip chip--on-dark">20〜45名</li>
+            <li class="chip chip--on-dark">教育旅行</li>
+            <li class="chip chip--on-dark">修学旅行</li>
+            <li class="chip chip--on-dark">研修旅行</li>
+            <li class="chip chip--on-dark">一般団体</li>
+            <li class="chip chip--on-dark">オーダーメイド対応</li>
           </ul>
         </div>
       </div>
@@ -792,7 +855,7 @@
             を米軍基地が占めます。頭上を戦闘機が横切り、爆音が日常に混じる。そこに、暮らしがあります。
           </p>
           <p>
-            見て、聞いて、知る。答えを急がず、現場で受け取った問いを持ち帰る——それがLLFの平和学習です。なぜ。どうして。その疑問が、探究の始まりになります。
+            見て、聞いて、知る。答えを急がず、現場で受け取った問いを持ち帰る——それが、私たちの平和学習です。なぜ。どうして。その疑問が、探究の始まりになります。
           </p>
         </div>
       </div>
@@ -822,7 +885,7 @@
         <div class="section-head reveal">
           <span class="label-en">Programs</span>
           <h2>3つのプログラム</h2>
-          <p class="lead">見る・聞く・知るを、一日の行程に。道の駅かでなの平和学習を軸に、地域交流とオーダーメイド設計を束ねます。</p>
+          <p class="lead">目的・対象に合わせて選べる3つのプログラム。米軍基地を見る「未来型平和学習」を軸に、地域交流とオーダーメイド設計を束ねます。</p>
         </div>
 
         <div class="bento">
@@ -834,9 +897,10 @@
               <img class="media-img" src="assets/deck-students.jpg" alt="展望所で嘉手納基地を見学する生徒たち">
             </div>
             <div class="pcard__body">
-              <span class="badge-base">道の駅かでなで開催</span>
-              <h3><span style="white-space:nowrap">道の駅かでな</span><span style="white-space:nowrap">平和学習</span></h3>
-              <p class="pcard__desc">展望所から嘉手納基地を一望し、ガイドが「今そこにある現実」を語る基本プログラム。観光協会主催の受け皿として連携。</p>
+              <span class="badge-base">ガイド1名同行</span>
+              <h3>未来型平和学習</h3>
+              <p class="pcard__sub">米軍基地を見て、感じて、考える</p>
+              <p class="pcard__desc">目の前に広がる米軍基地の現実を、その目で見て、感じてください。沖縄の今を知ることが、平和を自分ごととして考える第一歩になります。</p>
               <div class="pcard__foot">
                 <a class="pcard__link" href="#flow">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
               </div>
@@ -850,9 +914,10 @@
               <img class="media-img" src="assets/community-01.jpg" alt="公民館で地域のお年寄りと中高生が交流する様子">
             </div>
             <div class="pcard__body">
-              <span class="badge-diff">LLFだけの体験</span>
-              <h3><span style="white-space:nowrap">地域ふれあい交流</span></h3>
-              <p class="pcard__desc">公民館で地域のお年寄りと膝を交える。サーターアンダギーを囲み、戦中・戦後の暮らしを本人の声で聞く、顔の見える時間。</p>
+              <span class="badge-diff">ここだけの体験</span>
+              <h3>地域ふれあい交流</h3>
+              <p class="pcard__sub">公民館で出会う、生きた言葉と記憶</p>
+              <p class="pcard__desc">公民館で地域の皆さんと交流。沖縄戦を生き延び、戦後の混乱の中を力強く生きてきた人々の声に、直接耳を傾けます。</p>
               <div class="pcard__foot">
                 <a class="pcard__link" href="#prog-02">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
               </div>
@@ -867,8 +932,9 @@
             </div>
             <div class="pcard__body">
               <span class="badge-diff">行程まるごと設計</span>
-              <h3>オーダーメイド フィールドワーク</h3>
-              <p class="pcard__desc">学年・テーマ・所要時間に合わせて行程をまるごと設計。基地のまちを歩き、問いを立てる。大学ゼミの探究・ディスカッションにも対応します。</p>
+              <h3>オーダーメイドプラン</h3>
+              <p class="pcard__sub">ご要望に沿って一緒に作ります</p>
+              <p class="pcard__desc">基地めぐりや各家庭の旧暦行事への参加など、目的・日程・人数に合わせてプランを一緒に組み立てます。「こんな体験をさせたい」をお聞かせください。</p>
               <div class="pcard__foot">
                 <a class="pcard__link" href="#prog-03">詳しく見る <span class="arrow" aria-hidden="true">→</span></a>
               </div>
@@ -879,67 +945,60 @@
       </div>
     </section>
 
-    <!-- ============== 学びの流れ ============== -->
-    <section class="flow" id="flow" data-screen-label="学びの流れ">
+    <!-- ============== ① 未来型平和学習（詳細） ============== -->
+    <section class="flow" id="flow" data-screen-label="未来型平和学習">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="label-en">Program 01 — Peace Study</span>
-          <h2>道の駅かでな平和学習</h2>
-          <p class="lead">嘉手納基地を一望する展望所と、リニューアルした学習展示室。ガイドが「今そこにある現実」を語る、3部構成・60分の平和学習です。嘉手納町観光協会主催のプログラムを、LLFが受け皿としてご案内します。</p>
+          <span class="label-en">Program 01 — Future Peace Study</span>
+          <h2>未来型平和学習</h2>
+          <p class="lead">米軍基地を見て、感じて、考える。目の前に広がる現実をその目で見ることが、平和を自分ごととして考える第一歩になります。</p>
         </div>
 
-        <ol class="steps">
-          <li class="step reveal">
-            <div class="step__media">
-              <span class="step__badge">01</span>
-              <img class="media-img" src="assets/briefing-room.jpg" alt="室内で嘉手納基地の概要説明を受ける様子">
-            </div>
-            <div class="step__body">
-              <span class="step__floor">室内 ・ モニター＆椅子</span>
-              <h3>基地概要説明</h3>
-              <p>椅子を用意した室内で、モニターを使って嘉手納基地の全体像を解説。腰を据えて、基地が町にもたらすものを学びます。</p>
-              <ul class="step__tags">
-                <li>基地の機能・役割</li><li>地域の負担</li><li>地元高校生インタビュー</li>
+        <div class="prog-detail__grid reveal">
+          <div class="prog-detail__media px">
+            <img class="media-img" src="assets/observatory-deck.jpg" alt="展望所から嘉手納基地・飛行場を望む">
+          </div>
+          <div class="prog-detail__copy">
+            <div class="spotlist">
+              <div class="spotlist__label">訪問スポット</div>
+              <p class="spotlist__note">ご希望のスポットをお選びいただけます。組み合わせもご相談ください。</p>
+              <ul>
+                <li>道の駅かでな</li>
+                <li>上陸地点</li>
+                <li>読谷飛行場跡地</li>
               </ul>
             </div>
-          </li>
-          <li class="step reveal" data-d="1">
-            <div class="step__media">
-              <span class="step__badge">02</span>
-              <img class="media-img" src="assets/exhibit-room.jpg" alt="2023年リニューアルの学習展示室（3F）内観">
+            <div class="guide-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+              <p>1クラスに1名のガイドが同行します</p>
             </div>
-            <div class="step__body">
-              <span class="step__floor">3F ・ 学習展示室 ・ 20分</span>
-              <h3>学習展示室ガイド</h3>
-              <p>2023年4月に完全リニューアルした展示室へ。探求シートを使い、沖縄戦から今へと続く嘉手納の歩みを、自分の手で読み解きます。</p>
-              <ul class="step__tags">
-                <li>沖縄戦の始まり</li><li>戦争に翻弄される町</li><li>基地の機能拡大</li><li>騒音・悪臭体験ブース</li>
-              </ul>
-            </div>
-          </li>
-          <li class="step reveal" data-d="2">
-            <div class="step__media">
-              <span class="step__badge">03</span>
-              <img class="media-img" src="assets/observatory-deck.jpg" alt="4F展望所のトラス屋根の下から嘉手納基地・飛行場を望む">
-            </div>
-            <div class="step__body">
-              <span class="step__floor">4F ・ 展望所 ・ 30分</span>
-              <h3>展望所ガイド</h3>
-              <p>新展望所はより基地に近く、大人数でも見学可能。飛行場を一望し、爆音と広大な敷地を体感しながら、軍用地と軍用機の「いま」を知ります。</p>
-              <ul class="step__tags">
-                <li>飛行場見学</li><li>騒音測定器</li><li>軍用地について</li><li>飛来する軍用機</li>
-              </ul>
-            </div>
-          </li>
-        </ol>
+          </div>
+        </div>
 
         <ul class="flow-facts reveal">
-          <li class="fact"><span class="k">所要時間</span><span class="v">60分</span><span class="s">調整可・大規模校対応</span></li>
-          <li class="fact"><span class="k">料金</span><span class="v">770円～</span><span class="s">生徒770円／社会人1,100円</span></li>
-          <li class="fact"><span class="k">催行人数</span><span class="v">20名～</span><span class="s">1クラス最大45名</span></li>
+          <li class="fact"><span class="k">所要時間</span><span class="v">60分</span><span class="s">時間調整可</span></li>
+          <li class="fact"><span class="k">最少催行人数</span><span class="v">20名</span><span class="s">20名以下も可</span></li>
           <li class="fact"><span class="k">受入</span><span class="v">通年</span><span class="s">英語対応可</span></li>
-          <li class="fact"><span class="k">オンライン</span><span class="v">対応可</span><span class="s">遠隔の学習ガイド</span></li>
         </ul>
+
+        <div class="reveal">
+          <div class="price-block">
+            <div class="price-row"><span class="price-label">学生</span><span class="price-value">770円 <span>/ 名</span></span></div>
+            <div class="price-row"><span class="price-label">一般</span><span class="price-value">1,100円 <span>/ 名</span></span></div>
+          </div>
+          <p class="min-note">※ 20名以下の場合は20名分の料金（学生 15,400円・一般 22,000円）となります。</p>
+          <div class="keywords">
+            <span class="keyword">道の駅かでな</span>
+            <span class="keyword">上陸地点</span>
+            <span class="keyword">読谷飛行場跡地</span>
+            <span class="keyword">ガイド同行</span>
+          </div>
+          <div class="apply-inline">
+            <!-- TODO: ①未来型平和学習のGoogleフォームURLに差し替え -->
+            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
+            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+          </div>
+        </div>
 
       </div>
     </section>
@@ -953,19 +1012,40 @@
           </div>
           <div class="prog-detail__copy">
             <span class="label-en">Program 02 — Community</span>
-            <span class="prog-detail__tag">LLFだけの体験</span>
+            <span class="prog-detail__tag">ここだけの体験</span>
             <h2>地域ふれあい交流</h2>
-            <p class="lead">公民館で、地域のお年寄りと膝を交える時間。基地の隣で暮らしてきた人の声を、本人から直接聞きます。</p>
-            <p>サーターアンダギーとさんぴん茶を囲み、戦中・戦後の暮らし、基地とともに生きてきた日常を当事者の言葉で聞く。「道の駅かでな平和学習」で「見て・知った」ことを、人の声で受け取り直す——教科書や展示では伝わらない「生活者の現実」に触れる、LLFだけの体験です。</p>
+            <p class="lead">公民館での地域の皆さんとの交流は、何にも代えられない宝物です。</p>
+            <p>沖縄戦を生き延び、戦後の混乱の中を力強く生きてきた人々の声に、ぜひ耳を傾けてください。教科書や展示では伝わらない「生活者の現実」に、人の声で触れる時間です。</p>
+            <div class="quote"><p>教科書には載っていない言葉が、ここにあります。</p></div>
           </div>
         </div>
         <ul class="flow-facts reveal">
           <li class="fact"><span class="k">所要時間</span><span class="v">90分</span><span class="s">公民館で実施</span></li>
-          <li class="fact"><span class="k">料金</span><span class="v">1,100円～</span><span class="s">大人2,200円</span></li>
-          <li class="fact"><span class="k">場所</span><span class="v">公民館</span><span class="s">嘉手納町内6か所</span></li>
-          <li class="fact"><span class="k">予約</span><span class="v">要事前</span><span class="s">事前予約制</span></li>
-          <li class="fact"><span class="k">付帯</span><span class="v">茶菓子付</span><span class="s">サーターアンダギー・さんぴん茶</span></li>
+          <li class="fact"><span class="k">最少催行人数</span><span class="v">20名</span><span class="s">20名以下も可</span></li>
+          <li class="fact"><span class="k">場所</span><span class="v">公民館</span><span class="s">嘉手納町内</span></li>
         </ul>
+        <div class="reveal">
+          <div class="price-block">
+            <div class="price-row"><span class="price-label">学生</span><span class="price-value">1,100円 <span>/ 名</span></span></div>
+            <div class="price-row"><span class="price-label">一般</span><span class="price-value">2,000円 <span>/ 名</span></span></div>
+          </div>
+          <p class="min-note">※ 20名以下の場合は20名分の料金（学生 22,000円・一般 40,000円）となります。</p>
+          <div class="omake">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <p><strong>サーターアンダギー・さんぴん茶つき</strong><br>アレルギーをお持ちの方は、お申し込み時にお知らせください。対応いたします。</p>
+          </div>
+          <div class="keywords">
+            <span class="keyword">公民館交流</span>
+            <span class="keyword">戦争体験者の声</span>
+            <span class="keyword">地域の方々との対話</span>
+            <span class="keyword">戦後の記憶</span>
+          </div>
+          <div class="apply-inline">
+            <!-- TODO: ②地域ふれあい交流のGoogleフォームURLに差し替え -->
+            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
+            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -974,40 +1054,73 @@
       <div class="wrap">
         <div class="prog-detail__grid reveal">
           <div class="prog-detail__copy">
-            <span class="label-en">Program 03 — Fieldwork</span>
+            <span class="label-en">Program 03 — Custom Plan</span>
             <span class="prog-detail__tag">行程まるごと設計</span>
-            <h2>オーダーメイド フィールドワーク</h2>
-            <p class="lead">学年・テーマ・所要時間に合わせて、行程をまるごと設計するプラン。道の駅かでなを起点に、まちを歩き、自分の問いを立てます。</p>
-            <p>嘉手納・読谷エリアを舞台に、学習内容やご要望に合わせて、行程の作成からLLFが伴走。基地の現実を歩いて体感し、見る・聞く・知るを自分のペースで深めます。大学ゼミの探究・ディスカッションのテーマに合わせた設計にも対応します。</p>
+            <h2>オーダーメイドプラン</h2>
+            <p class="lead">上陸地点や中部近郊の基地めぐり、各家庭の旧暦行事への参加など、目的・日程・人数に合わせてプランを一緒に組み立てます。</p>
+            <p>「こんな体験をさせたい」というイメージをお聞かせください。行程の作成から一緒に伴走し、基地の現実を歩いて体感する学びを設計します。</p>
           </div>
           <div class="prog-detail__media px">
             <img class="media-img" src="assets/fieldwork-river.jpg" alt="嘉手納・読谷エリアのフィールドワーク（比謝川周辺）">
           </div>
         </div>
-        <ul class="flow-facts reveal">
-          <li class="fact"><span class="k">所要時間</span><span class="v">4／6時間</span><span class="s">行程に合わせて選択</span></li>
-          <li class="fact"><span class="k">料金</span><span class="v">3,000円～</span><span class="s">6時間5,000円（一律）</span></li>
-          <li class="fact"><span class="k">エリア</span><span class="v">嘉手納<span class="dot">・</span>読谷</span><span class="s">起点は道の駅かでな</span></li>
-          <li class="fact"><span class="k">進め方</span><span class="v">完全オーダー</span><span class="s">行程作成から相談</span></li>
-          <li class="fact"><span class="k">対応</span><span class="v">ゼミ・研究</span><span class="s">英語対応可</span></li>
-        </ul>
+        <div class="reveal">
+          <div class="course-grid">
+            <div class="course-box">
+              <div class="c-label">半日コース</div>
+              <div class="c-time">4時間</div>
+              <div class="c-price">5,000円 <span>/ 名</span></div>
+              <div class="c-note">一律料金</div>
+            </div>
+            <div class="course-box">
+              <div class="c-label">1日コース</div>
+              <div class="c-time">8時間</div>
+              <div class="c-price">8,000円 <span>/ 名</span></div>
+              <div class="c-note">一律料金</div>
+            </div>
+          </div>
+          <div class="keywords">
+            <span class="keyword">基地めぐり</span>
+            <span class="keyword">各家庭の旧暦行事</span>
+            <span class="keyword">半日・1日コース</span>
+            <span class="keyword">日程相談可</span>
+          </div>
+          <div class="apply-inline">
+            <!-- TODO: ③オーダーメイドプランのGoogleフォームURLに差し替え -->
+            <a class="btn btn--primary" href="#">お申し込み（Googleフォーム） <span class="arrow" aria-hidden="true">→</span></a>
+            <p class="note">※ フォーム準備中。公開までしばらくお待ちください。</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============== 申し込み / パンフレット（CTA帯） ============== -->
-    <section class="apply" id="contact" data-screen-label="申し込み">
+    <!-- ============== 対象 ============== -->
+    <section class="target" id="target" data-screen-label="対象">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="label-en">Target</span>
+          <h2>対象</h2>
+          <p class="lead">小学生から大学・一般団体まで、年代・目的に合わせてご案内します。</p>
+        </div>
+        <div class="target__grid reveal">
+          <div class="target__item">小学校</div>
+          <div class="target__item">中学校</div>
+          <div class="target__item">高等学校</div>
+          <div class="target__item">大学・専門学校</div>
+          <div class="target__item">一般・研修団体</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== お問い合わせ（CTA帯） ============== -->
+    <section class="apply" id="contact" data-screen-label="お問い合わせ">
       <div class="wrap wrap--narrow reveal">
-        <span class="label-en">Apply</span>
-        <h2>申し込みはこちらから</h2>
-        <p>「沖縄 平和ガイド in 道の駅かでな」のお申し込みは、専用フォームから受け付けています。フォームのご登録後、折り返し担当者からご連絡いたします。</p>
-        <ol class="apply-steps">
-          <li><span class="an">1</span><p>下記のボタンから予約フォームへ進みます。</p></li>
-          <li><span class="an">2</span><p>必要な情報を入力し、送信します。</p></li>
-          <li><span class="an">3</span><p>折り返し、スタッフからメールでご連絡します。</p></li>
-        </ol>
+        <span class="label-en">Contact</span>
+        <h2>あなたの団体だけの<br>平和学習を、一緒に。</h2>
+        <p>まずはお気軽にご相談ください。目的・人数・日程に合わせてご提案します。各プログラムのお申し込みは、上記の専用フォームから受け付けています。</p>
         <div class="apply__actions">
-          <!-- TODO: 予約・問い合わせフォームのURLに差し替え -->
-          <a class="btn btn--on-navy" href="#">予約・問い合わせフォームへ <span class="arrow" aria-hidden="true">→</span></a>
+          <!-- TODO: お問い合わせ先（メール／フォームURL）に差し替え -->
+          <a class="btn btn--on-navy" href="#">お問い合わせ <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -1048,15 +1161,15 @@
     <div class="wrap">
       <div class="footer__top">
         <div class="footer__brand">
-          <span class="mark">LLF</span>
-          <span class="mark-sub">Look · Listen · Find out</span>
-          <p>見る・聞く・知る。道の駅かでなを拠点に、嘉手納の「いま」を現場で受け取る平和学習をご案内します。</p>
+          <span class="mark">平和学習　沖縄</span>
+          <span class="mark-sub">Okinawa Peace Learning</span>
+          <p>学ぶ。考える。次の一歩へ。嘉手納・読谷を舞台に、沖縄の「いま」を現場で受け取る平和学習をご案内します。</p>
         </div>
         <div class="footer__col">
           <h5>Menu</h5>
           <ul>
             <li><a href="#programs">プログラム</a></li>
-            <li><a href="#flow">学びの流れ</a></li>
+            <li><a href="#target">対象</a></li>
             <li><a href="#place">道の駅かでな</a></li>
             <li><a href="#access">アクセス</a></li>
           </ul>
@@ -1064,14 +1177,14 @@
         <div class="footer__col">
           <h5>Contact</h5>
           <ul>
-            <li><a href="#contact">予約・お問い合わせ</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
             <li><address>沖縄県中頭郡嘉手納町<br>字屋良1026-3 道の駅かでな</address></li>
           </ul>
         </div>
       </div>
       <div class="footer__bottom">
-        <small>© 2026 LLF — 沖縄・嘉手納 平和学習プログラム</small>
-        <small>Look · Listen · Find out</small>
+        <small>© 2026 平和学習 沖縄 — Okinawa Peace Learning</small>
+        <small>学ぶ。考える。次の一歩へ。</small>
       </div>
     </div>
   </footer>
