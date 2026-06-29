@@ -482,7 +482,7 @@
   }
   .pcard__num::before { content: ""; width: 16px; height: 1.5px; background: var(--teal-on-dark); flex-shrink: 0; }
   .pcard__body { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4); flex: 1; }
-  .pcard h3 { font-size: var(--text-xl); color: var(--ink); }
+  .pcard h3 { font-size: clamp(1.2rem, 0.45vw + 1rem, 1.45rem); color: var(--ink); letter-spacing: 0.01em; white-space: nowrap; }
   .pcard__desc { color: var(--ink-soft); font-size: var(--text-base); line-height: 1.8; margin: 0; max-width: 32em; }
   .pcard__foot { margin-top: auto; display: flex; flex-direction: column; gap: var(--space-6); padding-top: var(--space-2); }
   .pcard__link {
@@ -664,7 +664,7 @@
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--grid-gap); margin-top: var(--space-12); align-items: stretch; }
   .contact-card { background: var(--surface-card); border-radius: var(--radius-lg); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; }
   .contact-card h3 { font-size: var(--text-xl); color: var(--ink); margin-bottom: var(--space-3); }
-  .contact-card > p { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.85; margin: 0 0 var(--space-6); max-width: none; }
+  .apply .contact-card > p { color: var(--ink-soft); font-size: var(--text-sm); line-height: 1.85; margin: 0 0 var(--space-6); max-width: none; }
   .contact-card .btn { width: 100%; justify-content: center; margin-top: auto; }
   .contact-card .note { font-size: var(--text-xs); color: var(--ink-soft); margin: var(--space-3) 0 0; }
   .contact-form { display: flex; flex-direction: column; gap: var(--space-4); margin-top: auto; }
@@ -822,7 +822,6 @@
       <a href="#place">道の駅かでな</a>
       <a href="#notes">note</a>
       <a class="mobile-nav__cta" href="#contact">お問い合わせ</a>
-      <p class="mobile-nav__meta">沖縄県中頭郡嘉手納町 字屋良1026-3<br>道の駅かでな</p>
     </nav>
   </div>
 
@@ -916,7 +915,7 @@
               <img class="media-img" src="assets/deck-students.jpg" alt="展望所で嘉手納基地を見学する生徒たち">
             </div>
             <div class="pcard__body">
-              <span class="badge-base">ガイド1名同行</span>
+              <span class="badge-base">ガイド同行</span>
               <h3>未来型平和学習</h3>
               <p class="pcard__sub">米軍基地を見て、感じて、考える</p>
               <p class="pcard__desc">目の前に広がる米軍基地の現実を、その目で見て、感じてください。沖縄の今を知ることが、平和を自分ごととして考える第一歩になります。</p>
@@ -983,7 +982,7 @@
               <p class="spotlist__note">ご希望のスポットをお選びいただけます。組み合わせもご相談ください。</p>
               <ul>
                 <li>道の駅かでな</li>
-                <li>上陸地点</li>
+                <li>米軍上陸地点</li>
                 <li>読谷飛行場跡地</li>
               </ul>
             </div>
@@ -1008,7 +1007,7 @@
           <p class="min-note">※ 20名以下の場合は20名分の料金（学生 15,400円・一般 22,000円）となります。</p>
           <div class="keywords">
             <span class="keyword">道の駅かでな</span>
-            <span class="keyword">上陸地点</span>
+            <span class="keyword">米軍上陸地点</span>
             <span class="keyword">読谷飛行場跡地</span>
             <span class="keyword">ガイド同行</span>
           </div>
@@ -1072,7 +1071,7 @@
             <span class="label-en">Program 03 — Custom Plan</span>
             <span class="prog-detail__tag">行程まるごと設計</span>
             <h2>オーダーメイドプラン</h2>
-            <p class="lead">上陸地点や中部近郊の基地めぐり、各家庭の旧暦行事への参加など、目的・日程・人数に合わせてプランを一緒に組み立てます。</p>
+            <p class="lead">米軍上陸地点や中部近郊の基地めぐり、各家庭の旧暦行事への参加など、目的・日程・人数に合わせてプランを一緒に組み立てます。</p>
             <p>「こんな体験をしたい」というイメージをお聞かせください。行程の作成から一緒に伴走し、沖縄戦から続く現実を一緒に体感する学びを設計します。</p>
           </div>
           <div class="prog-detail__media px">
@@ -1202,8 +1201,8 @@
         <div class="footer__col">
           <h5>Contact</h5>
           <ul>
-            <li><a href="#contact">お問い合わせ</a></li>
-            <li><address>沖縄県中頭郡嘉手納町<br>字屋良1026-3 道の駅かでな</address></li>
+            <li><a href="#contact">お問い合わせ（フォーム）</a></li>
+            <li><a href="https://note.com/witty_okapi1304" target="_blank" rel="noopener">note 最新記事</a></li>
           </ul>
         </div>
       </div>
