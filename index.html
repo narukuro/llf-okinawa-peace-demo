@@ -395,24 +395,6 @@
   body.intro .hero__actions { animation: fade .8s ease 1.35s both; }
   body.intro .hero .chips { animation: fade .8s ease 1.5s both; }
 
-  /* 所在地ロケーター */
-  .hero__loc {
-    position: absolute; right: var(--gutter); bottom: clamp(28px, 5vh, 60px); z-index: 3;
-    display: flex; align-items: center; gap: 14px;
-    background: oklch(20% 0.05 255 / 0.44); backdrop-filter: blur(8px) saturate(1.1);
-    border: 1px solid oklch(96% 0.01 95 / 0.18);
-    border-radius: var(--radius-md); padding: 12px 18px 12px 14px;
-  }
-  body.intro .hero__loc { animation: fade .9s ease 1.7s both; }
-  .hero__loc img.loc-map { width: 132px; height: auto; display: block; flex-shrink: 0; filter: drop-shadow(0 2px 6px oklch(20% 0.03 255 / 0.45)); }
-  .hero__loc .meta { display: flex; flex-direction: column; line-height: 1.25; }
-  .hero__loc .meta .l { font-family: var(--font-label); text-transform: uppercase; letter-spacing: .18em; font-size: 9px; color: var(--teal-on-dark); }
-  .hero__loc .meta .t { font-family: var(--font-serif); font-weight: 700; color: var(--ink-inv); font-size: 15px; letter-spacing: .04em; margin-top: 3px; }
-  .hero__loc .meta .s { font-family: var(--font-sans); color: oklch(96% 0.01 95 / 0.72); font-size: 11px; margin-top: 2px; letter-spacing: .02em; }
-  /* 広い画面では所在地カードを右隅から中央寄りへ引き込み、チップ列の上に持ち上げる */
-  @media (min-width: 1100px) {
-    .hero__loc { right: clamp(var(--gutter), 7vw, 140px); bottom: clamp(92px, 13vh, 150px); }
-  }
 
   .hero__scroll {
     position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%);
@@ -794,7 +776,6 @@
     .pcard__body { padding: var(--space-6); }
   }
   @media (max-width: 560px) {
-    .hero__loc { display: none; }
     .hero__actions { flex-direction: column; align-items: stretch; }
     .hero__actions .btn { justify-content: center; }
     .flow-facts { grid-template-columns: repeat(2, 1fr); gap: var(--space-8) var(--space-6); }
@@ -877,14 +858,6 @@
           </ul>
         </div>
       </div>
-      <aside class="hero__loc" aria-label="所在地：沖縄県嘉手納町">
-        <img class="loc-map" src="assets/okinawa-locator.png" alt="沖縄本島における嘉手納町の位置" />
-        <div class="meta">
-          <span class="l">Location</span>
-          <span class="t">沖縄県 嘉手納町</span>
-          <span class="s">沖縄本島中部・道の駅かでな</span>
-        </div>
-      </aside>
       <div class="hero__scroll" aria-hidden="true">Scroll</div>
     </section>
 
