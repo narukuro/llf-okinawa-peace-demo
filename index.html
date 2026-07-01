@@ -1169,6 +1169,7 @@
             <p>ご相談・ご質問はこちらから。担当者より折り返しご連絡いたします。</p>
             <form class="contact-form" id="contactForm" action="contact.php" method="post" novalidate>
               <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="hidden" name="jsok" id="jsok" value="">
               <label>お名前<input type="text" name="name" required autocomplete="name"></label>
               <label>メールアドレス<input type="email" name="email" required autocomplete="email"></label>
               <label>お問い合わせ内容<textarea name="message" required></textarea></label>
@@ -1309,6 +1310,8 @@
       const form = document.getElementById('contactForm');
       const msg = document.getElementById('formMsg');
       if (!form) return;
+      // JS実行の証明（スパムbot対策）：この値が無い送信はサーバー側で無視される
+      var jsok = document.getElementById('jsok'); if (jsok) jsok.value = '1';
       const isDemo = /github\.io$/.test(location.hostname) || location.protocol === 'file:';
       form.addEventListener('submit', (e) => {
         if (!form.checkValidity()) return; // ブラウザ標準の必須チェックに任せる
